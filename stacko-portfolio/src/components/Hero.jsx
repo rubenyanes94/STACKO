@@ -9,7 +9,7 @@ const Hero = () => {
   const { isDevMode } = useContext(ThemeContext);
 
   return (
-    <section className="hero-section d-flex align-items-center" style={{ minHeight: '100vh', paddingTop: '80px' }}>
+    <section className="hero-section d-flex align-items-center" style={{ minHeight: '70vh', paddingTop: '80px' }}>
       <Container>
         <Row className="align-items-center">
           <Col lg={6}>
@@ -31,8 +31,8 @@ const Hero = () => {
                     Turning complex logic into efficient RESTful APIs[cite: 5, 10].
                   </p>
                   <div className="d-flex gap-3">
-                    <Button variant="outline-info" className="px-4 py-2 font-monospace">view_projects()</Button>
-                    <Button variant="link" className="text-decoration-none text-secondary font-monospace">read_docs.pdf</Button>
+                    <Button variant="outline-info" className="px-4 py-2 mb-5 font-monospace">view_projects()</Button>
+                    <Button variant="link" className="text-decoration-none text-secondary font-monospace mb-5">read_docs.pdf</Button>
                   </div>
                 </motion.div>
               ) : (
