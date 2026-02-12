@@ -9,7 +9,7 @@ const Hero = () => {
   const { isDevMode } = useContext(ThemeContext);
 
   return (
-    <section className="hero-section d-flex align-items-center" style={{ minHeight: '70vh', paddingTop: '80px' }}>
+    <section className="hero-section d-flex align-items-center" style={{ minHeight: '90vh', paddingTop: '80px' }}>
       <Container>
         <Row className="align-items-center">
           <Col lg={6}>

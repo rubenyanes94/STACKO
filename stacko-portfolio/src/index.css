@@ -1,3 +1,18 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw; /* El ancho máximo es el de la ventana */
+  overflow-x: hidden !important; /* CORTAR cualquier cosa que se salga a los lados */
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -110,3 +125,39 @@ button:focus-visible {
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* Contenedor que se mueve */
+.ticker-track {
+  width: max-content; /* Permite que sea más ancho que la pantalla */
+  animation: scroll-carousel 30s linear infinite;
+}
+
+/* La animación matemática exacta */
+@keyframes scroll-carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Como duplicamos la lista una vez, movemos el 50% para volver al inicio "invisiblemente" */
+    transform: translateX(-50%);
+  }
+}
+
+/* Pausar al pasar el mouse (opcional, para mejor UX) */
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Asegurar que los items no se encojan */
+.ticker-item {
+  flex-shrink: 0; 
+  transition: transform 0.3s ease;
+}
+
+.ticker-item:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+           0% { transform: translateX(0); }
+           100% { transform: translateX(-50%); } 
