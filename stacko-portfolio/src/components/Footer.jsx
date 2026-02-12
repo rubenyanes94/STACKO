@@ -18,9 +18,9 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: faGithub, url: "https://github.com/rubenyanes94", label: "git_hub" },
-    { icon: faLinkedin, url: "https://linkedin.com", label: "linked_in" }, // Agrega tu URL real
-    { icon: faTwitter, url: "https://twitter.com", label: "twitter" },     // Agrega tu URL real
-    { icon: faMedium, url: "https://medium.com", label: "medium" }         // Agrega tu URL real
+    { icon: faLinkedin, url: "https://www.linkedin.com/in/ruben-yanes/", label: "linked_in" }, 
+    { icon: faTwitter, url: "https://x.com/rubeniyanes", label: "twitter" },     
+    { icon: faMedium, url: "https://medium.com/@rubeny.dev", label: "medium" }         
   ];
 
   const handleCopy = () => {
