@@ -29,9 +29,9 @@ const Footer = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Estilos dinámicos para el fondo
-  const footerBg = isDevMode ? '#0a0a0a' : '#1e1b4b'; // Negro vs Indigo Oscuro
-  const textColor = isDevMode ? '#00f2ff' : '#ffffff'; // Cian eléctrico vs Blanco
+
+  const footerBg = isDevMode ? '#0a0a0a' : '#1e1b4b'; 
+  const textColor = isDevMode ? '#ffff' : '#ffffff'; 
 
   return (
     <footer 
@@ -43,7 +43,7 @@ const Footer = () => {
         borderTop: isDevMode ? '1px solid #333' : 'none'
       }}
     >
-      {/* Elemento decorativo de fondo (Matrix rain abstracta o círculos) */}
+  
       <div 
         className="position-absolute w-100 h-100 top-0 start-0" 
         style={{ 
@@ -77,8 +77,7 @@ const Footer = () => {
               </p>
             )}
           </Col>
-
-          {/* --- BLOQUE 2: CONTACTO CENTRAL --- */}
+          
           <Col md={4} className="text-center">
             <div 
                 className={`d-inline-flex flex-column p-3 rounded ${isDevMode ? 'border border-dark' : 'bg-white bg-opacity-10'}`}

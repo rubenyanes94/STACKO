@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container, Row, Col, Badge, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Badge, Button, Card, Carousel } from 'react-bootstrap';
 import { ThemeContext } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,163 +9,150 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 const Projects = () => {
   const { isDevMode } = useContext(ThemeContext);
 
-  // DATOS DE TUS PROYECTOS
-  // Puedes cambiar el texto y las URLs de las imágenes aquí
-  const allProjects = [
+  const devProjects = [
     {
-      id: 1,
-      title: "E-Commerce Microservices",
-      category: "Full Stack",
-      img: "https://placehold.co/600x400/111/FFF?text=Architecture+Diagram", // FOTO
-      desc: "Plataforma de ventas distribuida con pasarela de pagos.",
-      // Aquí definimos qué texto mostrar en cada modo
-      details: isDevMode 
-        ? "Arquitectura de microservicios en Docker. Backend Flask manejando pedidos y Node.js para notificaciones. Base de datos PostgreSQL con replicación."
-        : "Solución robusta para comercio online que soporta 10k usuarios simultáneos. Redujo los tiempos de carga en un 40% aumentando la retención de clientes.",
-      stack: ["Python", "Flask", "Docker", "AWS"],
-      link: "#", // Link a la demo
-      repo: "#"  // Link al código
+      id: "furniture-store-01",
+      title: "La Tienda de los Muebles",
+      category: isDevMode ? "Performance Optimized Landing" : "Retail Digital Strategy",
+      images: [
+        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-hero.png",
+        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-catalog.png",
+        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-mobile.png",
+        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-performance.png"
+      ],
+      desc: isDevMode
+        ? "High-performance landing page focused on Core Web Vitals and conversion optimization."
+        : "Digital showcase platform designed to maximize furniture catalog visibility and lead generation.",
+      details: isDevMode
+        ? "Developed with semantic HTML5, modern CSS3, and optimized Vanilla JS. Implemented Lazy Loading, WebP image compression, and resource minification to achieve a 95+ Lighthouse performance score."
+        : "User-centered design (UX) focused on seamless category navigation. Local SEO-optimized structure, helping the store scale Google rankings for regional furniture searches.",
+      stack: isDevMode
+        ? ["JavaScript", "Performance", "HTML5", "CSS3", "SEO"]
+        : ["eCommerce", "UX Design", "Local SEO", "Conversion Rate"],
+      link: "https://www.latiendadelosmuebles.com/",
+      repo: "https://github.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance"
     },
     {
       id: 2,
-      title: "Financial Growth Dashboard",
-      category: "Data Science",
-      img: "https://placehold.co/600x400/eee/333?text=PowerBI+Report", // FOTO
-      desc: "Análisis predictivo de tendencias financieras.",
-      details: isDevMode
-        ? "ETL pipeline automatizado con Pandas limpiando 5GB de data cruda. Modelado de datos en Star Schema y visualización en Power BI con medidas DAX avanzadas."
-        : "Tablero ejecutivo que permite visualizar el flujo de caja en tiempo real. Identificó fugas de capital ahorrando $15k trimestrales a la empresa.",
-      stack: ["Power BI", "Python", "SQL", "Excel"],
-      link: "#",
-      repo: "#"
-    },
-    {
-      id: 3,
-      title: "Healthcare Appointment App",
-      category: "Frontend / UX",
-      img: "https://placehold.co/600x400/222/FFF?text=React+Interface", // FOTO
-      desc: "Sistema de gestión de citas médicas.",
-      details: isDevMode
-        ? "SPA construida con React y Redux Toolkit. Integración con Google Calendar API y sistema de autenticación Auth0. Testing unitario con Jest."
-        : "Interfaz intuitiva para pacientes y doctores. Digitalizó el proceso de agendamiento reduciendo el ausentismo en un 25%.",
-      stack: ["React", "Redux", "Firebase", "Jest"],
+      title: "Real-Time Collaboration",
+      category: "Full Stack",
+      images: [
+        "https://placehold.co/600x400/111/00f2ff?text=Editor+Interface",
+        "https://placehold.co/600x400/111/00f2ff?text=User+Presence",
+        "https://placehold.co/600x400/111/00f2ff?text=Socket+Logs",
+        "https://placehold.co/600x400/111/00f2ff?text=Dark+Mode"
+      ],
+      desc: "Edición compartida en tiempo real usando WebSockets.",
+      details: "Frontend en React con manejo de estado complejo mediante Redux Toolkit. Comunicación bidireccional fluida.",
+      stack: ["React", "Node.js", "Socket.io", "MongoDB"],
       link: "#",
       repo: "#"
     }
   ];
 
+  const dataProjects = [
+    {
+      id: 101,
+      title: "Market Trend Analysis",
+      category: "Business Intelligence",
+      images: [
+        "https://placehold.co/600x400/eee/6366f1?text=Executive+Summary",
+        "https://placehold.co/600x400/eee/6366f1?text=Regional+Sales",
+        "https://placehold.co/600x400/eee/6366f1?text=Forecast+Model",
+        "https://placehold.co/600x400/eee/6366f1?text=Demographics"
+      ],
+      desc: "Dashboard interactivo sobre el comportamiento del consumidor.",
+      details: "Identificación de patrones estacionales que resultaron en una optimización del 20% en el presupuesto de marketing.",
+      stack: ["Power BI", "SQL", "DAX"],
+      link: "#"
+    }
+  ];
+
+  const currentProjects = isDevMode ? devProjects : dataProjects;
+
   return (
-    <div className="min-vh-100 pt-5" 
-         style={{ 
-           backgroundColor: isDevMode ? '#0a0a0a' : '#f8f9fa',
-           color: isDevMode ? '#fff' : '#333',
-           transition: 'background-color 0.5s ease'
-         }}>
-      
+    <div className="min-vh-100 pt-5"
+      style={{
+        backgroundColor: isDevMode ? '#0a0a0a' : '#f8f9fa',
+        color: isDevMode ? '#fff' : '#333',
+        transition: 'all 0.5s ease'
+      }}>
+
       <Container className="py-5">
-        {/* HEADER: Botón Volver y Títulos */}
+        {/* Header */}
         <div className="d-flex align-items-center mb-5">
           <Link to="/" className="text-decoration-none me-4">
-            <Button 
-                variant={isDevMode ? "outline-light" : "outline-secondary"} 
-                className="rounded-circle d-flex align-items-center justify-content-center"
-                style={{ width: 50, height: 50 }}
-            >
-                <FontAwesomeIcon icon={faArrowLeft} />
+            <Button variant={isDevMode ? "outline-light" : "outline-secondary"} className="rounded-circle d-flex align-items-center justify-content-center" style={{ width: 50, height: 50 }}>
+              <FontAwesomeIcon icon={faArrowLeft} />
             </Button>
           </Link>
           <div>
-             <h6 className="text-uppercase mb-0 fw-bold" 
-                 style={{ color: isDevMode ? '#00f2ff' : '#6366f1', letterSpacing: '2px' }}>
-                {isDevMode ? 'cd /var/www/projects' : 'Portfolio Gallery'}
-             </h6>
-             <h1 className="display-4 fw-bold">
-                {isDevMode ? './All_Repositories' : 'Detailed Case Studies'}
-             </h1>
+            <h6 className="text-uppercase mb-0 fw-bold" style={{ color: isDevMode ? '#f7f7f7' : '#6366f1', letterSpacing: '2px' }}>
+              {isDevMode ? 'cd /home/projects' : 'Strategic Analytics'}
+            </h6>
+            <h1 className="display-4 fw-bold">
+              {isDevMode ? './RUBO/Projects ' : 'Cases & Insights'}
+            </h1>
           </div>
         </div>
 
-        {/* LISTA DE TARJETAS */}
+        {/* Tarjetas con Carrusel */}
         <div className="d-flex flex-column gap-5">
-          {allProjects.map((project) => (
-            <Card key={project.id} className="border-0 shadow overflow-hidden" 
-                  style={{ backgroundColor: isDevMode ? '#161616' : '#fff' }}>
+          {currentProjects.map((project) => (
+            <Card key={project.id} className="border-0 shadow-lg overflow-hidden" style={{ backgroundColor: isDevMode ? '#161616' : '#fff' }}>
               <Row className="g-0">
-                
-                {/* COLUMNA IZQUIERDA: IMAGEN */}
-                <Col lg={5}>
-                  <div className="h-100 position-relative" style={{ minHeight: '300px' }}>
-                    <img 
-                      src={project.img} 
-                      alt={project.title} 
-                      className="w-100 h-100 object-fit-cover"
-                      style={{ filter: isDevMode ? 'grayscale(40%) contrast(1.2)' : 'none' }}
-                    />
-                    {/* Badge de Categoría sobre la imagen */}
-                    <div className="position-absolute top-0 start-0 p-3">
-                        <Badge bg={isDevMode ? "dark" : "light"} text={isDevMode ? "info" : "dark"} className="border">
-                            {project.category}
-                        </Badge>
-                    </div>
-                  </div>
+
+                {/* COLUMNA IZQUIERDA: CARRUSEL DE IMÁGENES */}
+                <Col lg={6}>
+                  <Carousel fade indicators={true} interval={5000} className="h-100">
+                    {project.images.map((img, idx) => (
+                      <Carousel.Item key={idx} className="h-100">
+                        <div style={{ minHeight: '400px', backgroundColor: '#000' }}>
+                          <img
+                            src={img}
+                            alt={`Slide ${idx}`}
+                            className="d-block w-100 object-fit-cover"
+                            style={{ height: '400px', opacity: isDevMode ? 0.8 : 1 }}
+                          />
+                        </div>
+                      </Carousel.Item>
+                    ))}
+                  </Carousel>
                 </Col>
-                
+
                 {/* COLUMNA DERECHA: INFORMACIÓN */}
-                <Col lg={7}>
+                <Col lg={6}>
                   <Card.Body className="p-4 p-lg-5 d-flex flex-column h-100">
                     <div className="mb-auto">
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                            <h2 className="fw-bold mb-0" style={{ fontFamily: isDevMode ? 'Courier Prime, monospace' : 'Roboto, sans-serif', color: isDevMode ? '#fff' : '#222' }}>
-                                {project.title}
-                            </h2>
-                            <FontAwesomeIcon icon={isDevMode ? faCode : faChartPie} className="text-muted fs-3" />
-                        </div>
-                        
-                        <p className="lead mb-4" style={{ color: isDevMode ? '#aaa' : '#555' }}>
-                            {project.desc}
-                        </p>
-                        
-                        {/* Caja de Detalles (Técnicos vs Negocio) */}
-                        <div className={`p-3 rounded mb-4 ${isDevMode ? 'border border-secondary' : 'bg-light border-start border-4 border-primary'}`}>
-                            <small className="text-uppercase fw-bold text-muted d-block mb-2">
-                                {isDevMode ? '// Technical implementation' : 'Business Impact'}
-                            </small>
-                            <p className="mb-0 small" style={{ fontFamily: isDevMode ? 'Courier Prime, monospace' : 'sans-serif', color: isDevMode ? '#ccc' : '#444' }}>
-                                {project.details}
-                            </p>
-                        </div>
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <h2 className="fw-bold mb-0" style={{ color: isDevMode ? '#fff' : '#222' }}>{project.title}</h2>
+                        <FontAwesomeIcon icon={isDevMode ? faCode : faChartPie} className="text-muted fs-3" />
+                      </div>
+                      <p className="lead mb-4" style={{ color: isDevMode ? '#fff' : '#555' }}>{project.desc}</p>
 
-                        {/* Tecnologías (Badges) */}
-                        <div className="mb-4">
-                            {project.stack.map((tech, i) => (
-                                <Badge key={i} bg="transparent" className="me-2 mb-2 border text-secondary p-2">
-                                    {tech}
-                                </Badge>
-                            ))}
-                        </div>
+                      <div className={`p-3 rounded mb-4 ${isDevMode ? 'border border-secondary' : 'bg-light border-start border-4 border-primary'}`}>
+                        <small className="text-uppercase fw-bold text-muted d-block mb-2" style={{ color: isDevMode ? '#fff' : '#555' }}>
+                          {isDevMode ? 'Project.info' : 'Insight Summary'}
+                        </small>
+                        <p className="mb-0 small"style={{ color: isDevMode ? '#fff' : '#555' }}>{project.details}</p>
+                      </div>
+
+                      <div className="mb-4">
+                        {project.stack.map((tech, i) => (
+                          <Badge key={i} bg="transparent" className="me-2 mb-2 border p-2" style={{ color: isDevMode ? '#fff' : '#555' }}>{tech}</Badge>
+                        ))}
+                      </div>
                     </div>
 
-                    {/* Botones de Acción */}
                     <div className="d-flex gap-3 mt-3">
-                        {isDevMode && (
-                            <Button variant="outline-light" href={project.repo} target="_blank">
-                                <FontAwesomeIcon icon={faGithub} className="me-2" /> Repo
-                            </Button>
-                        )}
-                        <Button 
-                            style={{ 
-                                backgroundColor: isDevMode ? '#00f2ff' : '#6366f1', 
-                                color: isDevMode ? '#000' : '#fff',
-                                border: 'none'
-                            }} 
-                            className="fw-bold px-4 shadow-sm"
-                            href={project.link}
-                        >
-                             View Live <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-2" />
-                        </Button>
+                      {isDevMode && <Button variant="outline-light" href={project.repo} target="_blank"><FontAwesomeIcon icon={faGithub} className="me-2" /> Source</Button>}
+                      <Button style={{ backgroundColor: isDevMode ? '#00f2ff' : '#6366f1', color: isDevMode ? '#000' : '#fff', border: 'none' }} className="fw-bold px-4">
+                        {isDevMode ? 'Live App' : 'Full Report'} <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-2" />
+                      </Button>
                     </div>
                   </Card.Body>
                 </Col>
+
               </Row>
             </Card>
           ))}

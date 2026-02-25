@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { ThemeContext } from '../context/ThemeContext';
 import ProjectCard from './ProjectCard';
 
-// SIMULACIÓN DE DATA (Esto luego vendrá de tu Flask Backend)
 const projectsData = [
   {
     id: 1,
