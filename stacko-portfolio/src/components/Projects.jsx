@@ -123,13 +123,12 @@ const Projects = () => {
   return (
     <div className="min-vh-100 pt-5"
       style={{
-        backgroundColor: isDevMode ? '#0a0a0a' : '#f8f9fa',
+        backgroundColor: isDevMode ? '#283942' : '#f8f9fa',
         color: isDevMode ? '#fff' : '#333',
         transition: 'all 0.5s ease'
       }}>
 
       <Container className="py-5">
-        {/* Header */}
         <div className="d-flex align-items-center mb-5">
           <Link to="/" className="text-decoration-none me-4">
             <Button variant={isDevMode ? "outline-light" : "outline-secondary"} className="rounded-circle d-flex align-items-center justify-content-center" style={{ width: 50, height: 50 }}>
@@ -149,7 +148,7 @@ const Projects = () => {
         {/* Tarjetas con Carrusel */}
         <div className="d-flex flex-column gap-5">
           {currentProjects.map((project) => (
-            <Card key={project.id} className="border-0 shadow-lg overflow-hidden" style={{ backgroundColor: isDevMode ? '#161616' : '#fff' }}>
+            <Card key={project.id} className="border-0 shadow-lg overflow-hidden" style={{ backgroundColor: isDevMode ? '#4f5252' : '#fff' }}>
               <Row className="g-0">
 
                 {/* COLUMNA IZQUIERDA: CARRUSEL DE IMÁGENES */}
