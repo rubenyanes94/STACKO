@@ -33,20 +33,70 @@ const Projects = () => {
       repo: "https://github.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance"
     },
     {
-      id: 2,
-      title: "Real-Time Collaboration",
-      category: "Full Stack",
+      id: "clevac-ecommerce-02",
+      title: "CLEVAC Store",
+      category: isDevMode ? "Full-Stack E-commerce Solution" : "Digital Fashion Retailer",
       images: [
-        "https://placehold.co/600x400/111/00f2ff?text=Editor+Interface",
-        "https://placehold.co/600x400/111/00f2ff?text=User+Presence",
-        "https://placehold.co/600x400/111/00f2ff?text=Socket+Logs",
-        "https://placehold.co/600x400/111/00f2ff?text=Dark+Mode"
+        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/home-desktop.png",
+        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/product-detail.png",
+        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/cart-checkout.png",
+        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/mobile-responsive.png"
       ],
-      desc: "Edición compartida en tiempo real usando WebSockets.",
-      details: "Frontend en React con manejo de estado complejo mediante Redux Toolkit. Comunicación bidireccional fluida.",
-      stack: ["React", "Node.js", "Socket.io", "MongoDB"],
-      link: "#",
-      repo: "#"
+      desc: isDevMode
+        ? "A feature-rich clothing e-commerce platform built with React and advanced state management."
+        : "A modern online shopping experience tailored for fashion, focusing on user engagement and conversion.",
+      details: isDevMode
+        ? "Engineered with React.js and Redux for global state management (cart and user sessions). Features include dynamic product filtering, persistent storage for shopping carts, and a streamlined checkout flow with API integration."
+        : "High-end retail interface designed to reduce bounce rates. Includes an intuitive catalog, quick-add-to-cart features, and a mobile-first checkout process that minimizes friction for the end customer.",
+      stack: isDevMode
+        ? ["React", "Redux", "Node.js", "REST API", "Tailwind CSS"]
+        : ["eCommerce UX", "Inventory Management", "Sales Conversion", "Digital Branding"],
+      link: "https://www.clevac.store/",
+      repo: "https://github.com/rubenyanes94/CLEVAC-STORE"
+    },
+    {
+      id: "hidoc-management-03",
+      title: "HIDOC Medical Booking System",
+      category: isDevMode ? "Full-Stack Health Management System" : "Healthcare Operations SaaS",
+      images: [
+        "https://raw.githubusercontent.com/rubenyanes94/HIDOC/main/public/screenshots/dashboard-main.png",
+        "https://raw.githubusercontent.com/rubenyanes94/HIDOC/main/public/screenshots/patient-records.png",
+        "https://raw.githubusercontent.com/rubenyanes94/HIDOC/main/public/screenshots/appointment-scheduler.png",
+        " {tech_stack_diagram_url} "
+      ],
+      desc: isDevMode
+        ? "A comprehensive medical management platform with role-based access control and secure data handling."
+        : "An end-to-end digital health solution designed to streamline patient scheduling and clinical workflows.",
+      details: isDevMode
+        ? "Architected with Python (Flask) for the RESTful API and React for the dynamic UI. Features secure JWT authentication, SQLAlchemy for relational database management (PostgreSQL), and complex state lifting for real-time patient updates."
+        : "A strategic tool for healthcare providers that eliminates manual paperwork. It optimizes clinic resources by centralizing patient history and scheduling, reducing administrative overhead by 30%.",
+      stack: isDevMode
+        ? ["Python", "Flask", "React", "PostgreSQL", "JWT", "REST API"]
+        : ["SaaS Strategy", "Workflow Automation", "Data Security", "Healthcare UX"],
+      link: "https://sample-service-name-zo7b.onrender.com/",
+      repo: "https://github.com/rubenyanes94/HIDOC"
+    },
+    {
+      id: "aks-academy-04",
+      title: "AKS Academy",
+      category: isDevMode ? "AI-Integrated Sales Landing" : "AI-Powered Conversion Strategy",
+      images: [
+        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/hero-ai.png",
+        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/ai-assistant-chat.png",
+        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/course-catalog.png",
+        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/conversion-funnel.png"
+      ],
+      desc: isDevMode
+        ? "A high-conversion landing page featuring a custom AI Sales Assistant for automated lead qualification."
+        : "An intelligent educational platform designed to scale sales through automated 24/7 AI-driven customer interaction.",
+      details: isDevMode
+        ? "Built with React and integrated with OpenAI API (GPT-4) to create a specialized Sales Assistant. Implemented custom prompt engineering for lead nurturing and automated FAQ handling, resulting in zero-latency user support."
+        : "Strategic sales funnel that uses Conversational AI to identify customer pain points in real-time. This automation increases lead-to-customer conversion by 40% by providing instant, personalized course recommendations.",
+      stack: isDevMode
+        ? ["OpenAI API", "React", "Prompt Engineering", "Node.js", "Tailwind CSS"]
+        : ["Conversational AI", "Sales Funnel Opt.", "EdTech Strategy", "Customer Acquisition"],
+      link: "https://www.aksakademia.com/",
+      repo: "https://github.com/rubenyanes94/AKS-ACADEMY"
     }
   ];
 
@@ -134,7 +184,7 @@ const Projects = () => {
                         <small className="text-uppercase fw-bold text-muted d-block mb-2" style={{ color: isDevMode ? '#fff' : '#555' }}>
                           {isDevMode ? 'Project.info' : 'Insight Summary'}
                         </small>
-                        <p className="mb-0 small"style={{ color: isDevMode ? '#fff' : '#555' }}>{project.details}</p>
+                        <p className="mb-0 small" style={{ color: isDevMode ? '#fff' : '#555' }}>{project.details}</p>
                       </div>
 
                       <div className="mb-4">
