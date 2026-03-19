@@ -15,10 +15,10 @@ const Projects = () => {
       title: "La Tienda de los Muebles",
       category: isDevMode ? "Performance Optimized Landing" : "Retail Digital Strategy",
       images: [
-        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-hero.png",
-        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-catalog.png",
-        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-mobile.png",
-        "https://raw.githubusercontent.com/rubenyanes94/Furniture-Store-Landing-Page-Optimized-for-Performance/main/public/preview-performance.png"
+        "https://ik.imagekit.io/n9udqzkqr/Mobile%20-%20TDLM.png",
+        "https://ik.imagekit.io/n9udqzkqr/form%20-%20TDLM.png",
+        "https://ik.imagekit.io/n9udqzkqr/carrousel%20-%20TDLM.png",
+        "https://ik.imagekit.io/n9udqzkqr/hero%20-TDLM.png"
       ],
       desc: isDevMode
         ? "High-performance landing page focused on Core Web Vitals and conversion optimization."
@@ -37,10 +37,10 @@ const Projects = () => {
       title: "CLEVAC Store",
       category: isDevMode ? "Full-Stack E-commerce Solution" : "Digital Fashion Retailer",
       images: [
-        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/home-desktop.png",
-        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/product-detail.png",
-        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/cart-checkout.png",
-        "https://raw.githubusercontent.com/rubenyanes94/CLEVAC-STORE/main/public/screenshots/mobile-responsive.png"
+        "https://ik.imagekit.io/n9udqzkqr/hero%20-%20clevac.png",
+        "https://ik.imagekit.io/n9udqzkqr/modal%20-%20clevac.png",
+        "https://ik.imagekit.io/n9udqzkqr/cards%20-%20clevac.png",
+        "https://ik.imagekit.io/n9udqzkqr/clevac.png"
       ],
       desc: isDevMode
         ? "A feature-rich clothing e-commerce platform built with React and advanced state management."
@@ -59,10 +59,10 @@ const Projects = () => {
       title: "HIDOC Medical Booking System",
       category: isDevMode ? "Full-Stack Health Management System" : "Healthcare Operations SaaS",
       images: [
-        "https://raw.githubusercontent.com/rubenyanes94/HIDOC/main/public/screenshots/dashboard-main.png",
-        "https://raw.githubusercontent.com/rubenyanes94/HIDOC/main/public/screenshots/patient-records.png",
-        "https://raw.githubusercontent.com/rubenyanes94/HIDOC/main/public/screenshots/appointment-scheduler.png",
-        " {tech_stack_diagram_url} "
+        "https://ik.imagekit.io/n9udqzkqr/hero%20-%20HIDOC.png",
+        "https://ik.imagekit.io/n9udqzkqr/Dashboard%20-%20HIDOC.png",
+        "https://ik.imagekit.io/n9udqzkqr/docprofile%20-%20HIDOC.png",
+        "https://ik.imagekit.io/n9udqzkqr/cita-mapa.png"
       ],
       desc: isDevMode
         ? "A comprehensive medical management platform with role-based access control and secure data handling."

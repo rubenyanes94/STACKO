@@ -3,7 +3,6 @@ import { Container, Row, Col, Card, Badge, Stack } from 'react-bootstrap';
 import { ThemeContext } from '../context/ThemeContext';
 
 const projectsData = [
-  // --- PROYECTOS DEV MODE ---
   {
     id: 3,
     title: "AI Language Academy Engine",
@@ -21,7 +20,7 @@ const projectsData = [
     id: 4,
     title: "HIDOC Medical Platform",
     dev: {
-      imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000&auto=format&fit=crop",
+      imageUrl: "https://ik.imagekit.io/n9udqzkqr/hero%20-%20HIDOC.png",
       description: "Sistema de gestión de citas médicas con encriptación de datos sensibles y panel administrativo complejo.",
       tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
       highlight: "auth_middleware.py",
@@ -34,7 +33,7 @@ const projectsData = [
     id: 5,
     title: "CLEVAC E-commerce API",
     dev: {
-      imageUrl: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
+      imageUrl:"https://ik.imagekit.io/n9udqzkqr/hero%20-%20clevac.png",
       description: "Backend robusto para tienda de ropa. Pasarela de pagos integrada, gestión de webhooks y optimización de consultas SQL.",
       tags: ["Python", "Django", "Stripe API", "AWS S3"],
       highlight: "payment_webhook.py",
@@ -45,10 +44,10 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "Real-time Padel Tracker",
+    title: "La Tienda de Los Muebles - Optimized landing page",
     dev: {
       imageUrl: "https://images.unsplash.com/photo-1554062975-23b27b2561bd?q=80&w=1000&auto=format&fit=crop",
-      description: "App para seguimiento de estadísticas de padel en vivo usando WebSockets para actualización instantánea.",
+      description: "High-performance landing page focused on Core Web Vitals and conversion optimization.",
       tags: ["Socket.io", "Express", "MongoDB", "Tailwind"],
       highlight: "match_socket_hub.js",
       repo: "https://github.com/rubenyanes94/padel-tracker",
@@ -56,7 +55,6 @@ const projectsData = [
       actionLabel: "Ver Marcador"
     }
   },
-  // --- PROYECTOS DATA MODE ---
   {
     id: 1,
     title: "Inventory Intelligence",
@@ -137,7 +135,6 @@ const ProjectCard = ({ project, isDevMode }) => {
 const ProjectsList = () => {
   const { isDevMode } = useContext(ThemeContext);
 
-  // Inyectar Font Awesome dinámicamente si no está en tu index.html
   useEffect(() => {
     const link = document.createElement("link");
     link.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css";
