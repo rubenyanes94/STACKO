@@ -81,10 +81,10 @@ const Projects = () => {
       title: "AKS Academy",
       category: isDevMode ? "AI-Integrated Sales Landing" : "AI-Powered Conversion Strategy",
       images: [
-        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/hero-ai.png",
-        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/ai-assistant-chat.png",
-        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/course-catalog.png",
-        "https://raw.githubusercontent.com/rubenyanes94/AKS-ACADEMY/main/public/screenshots/conversion-funnel.png"
+        "https://ik.imagekit.io/n9udqzkqr/Aks.png",
+        "https://ik.imagekit.io/n9udqzkqr/akssss.png",
+        "https://ik.imagekit.io/n9udqzkqr/aksssssss.png",
+        "https://ik.imagekit.io/n9udqzkqr/akss.png"
       ],
       desc: isDevMode
         ? "A high-conversion landing page featuring a custom AI Sales Assistant for automated lead qualification."

@@ -46,12 +46,12 @@ const projectsData = [
     id: 6,
     title: "La Tienda de Los Muebles - Optimized landing page",
     dev: {
-      imageUrl: "https://images.unsplash.com/photo-1554062975-23b27b2561bd?q=80&w=1000&auto=format&fit=crop",
+      imageUrl: "https://ik.imagekit.io/n9udqzkqr/crads%20-%20TDLM.png",
       description: "High-performance landing page focused on Core Web Vitals and conversion optimization.",
-      tags: ["Socket.io", "Express", "MongoDB", "Tailwind"],
+      tags: ["Socket.io", "Express", "MongoDB", "Bootstrap"],
       highlight: "match_socket_hub.js",
       repo: "https://github.com/rubenyanes94/padel-tracker",
-      url: "https://padeltracker.live",
+      url: "https://www.latiendadelosmuebles.com/",
       actionLabel: "Ver Marcador"
     }
   },
