@@ -24,11 +24,12 @@ const Hero = () => {
                 >
                   <h5 className="text-brand mb-3 fw-bold font-monospace">&gt; root.start_engine()</h5>
                   <h1 className="display-3 fw-bold mb-4 font-monospace">
-                    Building <span className="text-brand">Scalable</span> Backend Architectures.
+                    Building <span className="text-brand">Scalable</span> App Webs Architectures.
                   </h1>
                   <p className="lead mb-5 text-secondary font-monospace">
                     Full Stack Developer specialized in Python (Flask) and React[cite: 4, 34]. 
                     Turning complex logic into efficient RESTful APIs[cite: 5, 10].
+                    And specialized in AI Integrations using AI agents with Claude. 
                   </p>
                   <div className="d-flex gap-3">
                     <Button variant="outline-info" className="px-4 py-2 mb-5 font-monospace">view_projects()</Button>
@@ -83,7 +84,7 @@ const Hero = () => {
                       <p className="ps-4 text-warning">self.backend = "Python/Flask"</p>
                       <p className="ps-4 text-warning">self.database = "PostgreSQL"</p>
                       <p className="ps-3">def deploy(self):</p>
-                      <p className="ps-4 text-info">return "App live on Heroku/Vercel" [cite: 12]</p>
+                      <p className="ps-4 text-info">return "App live on Heroku/Vercel/Render" [cite: 12]</p>
                     </div>
                   </div>
                 ) : (
