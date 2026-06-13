@@ -126,6 +126,21 @@ button:focus-visible {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
+/* Transiciones suaves para los enlaces del Navbar */
+.transition-colors {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover en modo claro (Empresa) */
+.bg-white .transition-colors:hover {
+  color: #6c757d !important; /* Un gris elegante */
+}
+
+/* Hover en modo oscuro (Dev) */
+.bg-dark .transition-colors:hover {
+  color: #ffffff !important;
+  opacity: 1;
+}
 /* Contenedor que se mueve */
 .ticker-track {
   width: max-content; /* Permite que sea más ancho que la pantalla */
@@ -160,4 +175,5 @@ button:focus-visible {
 
 @keyframes scroll {
            0% { transform: translateX(0); }
-           100% { transform: translateX(-50%); } 
+           100% { transform: translateX(-50%); }
+         }

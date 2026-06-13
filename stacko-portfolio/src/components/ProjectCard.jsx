@@ -9,10 +9,8 @@ import { motion } from 'framer-motion';
 const ProjectCard = ({ project }) => {
   const { isDevMode } = useContext(ThemeContext);
 
-  // Extraemos la info según el modo
   const content = isDevMode ? project.dev : project.analyst;
-  
-  // Estilos dinámicos
+
   const cardStyle = isDevMode 
     ? { 
         background: '#1a1a1a', 
@@ -36,7 +34,6 @@ const ProjectCard = ({ project }) => {
       className="h-100"
     >
       <Card className={`h-100 ${!isDevMode ? 'shadow-sm' : ''}`} style={cardStyle}>
-        {/* Header de la Card */}
         <div className="card-header border-0 bg-transparent pt-4 px-4 d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center gap-2">
             <FontAwesomeIcon 

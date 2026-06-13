@@ -3,8 +3,6 @@ import { ThemeContext } from '../context/ThemeContext';
 
 const TechTicker = () => {
   const { isDevMode } = useContext(ThemeContext);
-
-  // Lista de Tecnologías para el modo DEVELOPER
   const devStack = [
     { name: 'React', icon: 'devicon-react-original' },
     { name: 'JavaScript', icon: 'devicon-javascript-plain' },
@@ -18,7 +16,6 @@ const TechTicker = () => {
     { name: 'Jest', icon: 'devicon-jest-plain' },
   ];
 
-  // Lista de Tecnologías para el modo DATA ANALYST
   const dataStack = [
     { name: 'Python', icon: 'devicon-python-plain' },
     { name: 'Pandas', icon: 'devicon-pandas-original' },
@@ -31,15 +28,10 @@ const TechTicker = () => {
   ];
 
   const currentStack = isDevMode ? devStack : dataStack;
-  
-  // Duplicamos la lista para crear la ilusión de "infinito" sin cortes
   const infiniteStack = [...currentStack, ...currentStack];
 
   return (
-    // CONTENEDOR PRINCIPAL (LA JAULA)
-    // w-100: Ocupa el ancho disponible
-    // maxWidth: 100vw: IMPIDE que sea más ancho que la ventana (solución al error)
-    // overflow-hidden: CORTA todo lo que se salga a los lados
+   
     <div 
       className="w-100 py-4"
       style={{ 
@@ -53,14 +45,12 @@ const TechTicker = () => {
         zIndex: 1
       }}
     >
-      {/* EL TRACK (LA PISTA QUE SE MUEVE) */}
       <div 
         className="d-flex align-items-center"
         style={{
-          width: 'max-content', // Permite que sea tan largo como necesite
-          animation: 'scroll 30s linear infinite', // La animación definida en CSS
+          width: 'max-content', 
+          animation: 'scroll 30s linear infinite', 
         }}
-        // Pausar animación al pasar el mouse
         onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
         onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
       >
@@ -69,12 +59,11 @@ const TechTicker = () => {
             key={index} 
             className="d-flex align-items-center gap-2 mx-5"
             style={{ 
-              flexShrink: 0, // Evita que los iconos se aplasten
+              flexShrink: 0, 
               opacity: 0.7, 
               transition: 'transform 0.3s ease, opacity 0.3s ease',
               cursor: 'default'
             }}
-            // Efecto Hover individual
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.1)';
               e.currentTarget.style.opacity = '1';
