@@ -147,6 +147,11 @@ button:focus-visible {
   animation: scroll-carousel 30s linear infinite;
 }
 
+.theme-switch-custom:checked {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
 /* La animación matemática exacta */
 @keyframes scroll-carousel {
   0% {

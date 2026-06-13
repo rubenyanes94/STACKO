@@ -44,7 +44,7 @@ const Navbar = () => {
                 {isDevMode ? '// Projects' : 'Case Studies'}
               </Link>
               <Link to="/ai-agents" className={linkClasses} style={{ letterSpacing: isDevMode ? '0' : '1px' }}>
-                {isDevMode ? '// AI_Agents' : 'Agentes de AI'}
+                {isDevMode ? '// AI_Agents' : 'Agents de AI'}
               </Link>
 
               <a href="/#about" className={linkClasses} style={{ letterSpacing: isDevMode ? '0' : '1px' }}>
