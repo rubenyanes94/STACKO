@@ -85,9 +85,17 @@ YouTube y Vimeo solo cargan el reproductor cuando el visitante pulsa play, así 
 Copia `.env.example` a `.env` y define `VITE_FORMSPREE_ID` para recibir los mensajes en tu correo.
 Sin esa variable, el formulario abre el cliente de correo del visitante con el mensaje ya redactado.
 
-## Despliegue
+## Despliegue en Vercel (stackolabs.com)
 
-1. Define `VITE_SITE_URL` (y `VITE_FORMSPREE_ID`) en las variables de entorno del hosting.
-2. Comando de build: `npm run build`; carpeta de salida: `dist`.
-3. Ya incluido: `vercel.json` (URLs limpias y redirecciones 301 de las URLs antiguas) y `public/_redirects` (Netlify).
-4. Tras publicar: da de alta el dominio en Google Search Console y envía `https://tu-dominio/sitemap.xml`.
+La configuración ya está en el repo: `vercel.json` (build, URLs limpias, redirecciones 301, `www` → dominio raíz,
+caché y cabeceras de seguridad) y `.env.production` (`VITE_SITE_URL=https://stackolabs.com`).
+
+1. En Vercel: **Add New → Project** e importa el repo `rubenyanes94/STACKO`.
+2. **Root Directory: `stacko-portfolio`** (imprescindible: la app no está en la raíz del repo).
+   El framework (Vite), el build y la carpeta `dist` se leen de `vercel.json`.
+3. Opcional: en **Environment Variables** añade `VITE_FORMSPREE_ID` para que el formulario envíe a tu correo.
+4. **Deploy**. Vercel publica `main` en producción y cada PR en una URL de preview.
+5. **Settings → Domains**: añade `stackolabs.com` y `www.stackolabs.com`, y configura en tu proveedor de dominio
+   los registros DNS que Vercel indique (normalmente `A @ → 76.76.21.21` y `CNAME www → cname.vercel-dns.com`).
+6. Tras el primer despliegue: verifica el dominio en **Google Search Console** y envía
+   `https://stackolabs.com/sitemap.xml`.
