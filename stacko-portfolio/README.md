@@ -87,8 +87,12 @@ Sin esa variable, el formulario abre el cliente de correo del visitante con el m
 
 ## Despliegue en Vercel (stackolabs.com)
 
-La configuración ya está en el repo: `vercel.json` (build, URLs limpias, redirecciones 301, `www` → dominio raíz,
-caché y cabeceras de seguridad) y `.env.production` (`VITE_SITE_URL=https://stackolabs.com`).
+La configuración ya está en el repo: `vercel.json` (build, URLs limpias, redirecciones 301, caché y cabeceras de
+seguridad) y `.env.production` (`VITE_SITE_URL=https://www.stackolabs.com`).
+
+⚠️ La redirección entre `stackolabs.com` y `www` la hace **solo Vercel** (Settings → Domains: `stackolabs.com` → 308 →
+`www.stackolabs.com`). No añadas otra en `vercel.json`: dos reglas opuestas crean un bucle infinito.
+Si algún día cambias el dominio principal en Vercel, cambia también `VITE_SITE_URL`.
 
 1. En Vercel: **Add New → Project** e importa el repo `rubenyanes94/STACKO`.
 2. **Root Directory: `stacko-portfolio`** (imprescindible: la app no está en la raíz del repo).
@@ -96,6 +100,8 @@ caché y cabeceras de seguridad) y `.env.production` (`VITE_SITE_URL=https://sta
 3. Opcional: en **Environment Variables** añade `VITE_FORMSPREE_ID` para que el formulario envíe a tu correo.
 4. **Deploy**. Vercel publica `main` en producción y cada PR en una URL de preview.
 5. **Settings → Domains**: añade `stackolabs.com` y `www.stackolabs.com`, y configura en tu proveedor de dominio
-   los registros DNS que Vercel indique (normalmente `A @ → 76.76.21.21` y `CNAME www → cname.vercel-dns.com`).
+   los registros DNS que Vercel indique (en Namecheap → Advanced DNS: el `A @` y el `CNAME www` que muestra Vercel).
+   Borra los registros de aparcamiento de Namecheap (`URL Redirect Record` y `CNAME www → parkingpage`).
+   No toques los registros de correo (MX y SPF de privateemail).
 6. Tras el primer despliegue: verifica el dominio en **Google Search Console** y envía
-   `https://stackolabs.com/sitemap.xml`.
+   `https://www.stackolabs.com/sitemap.xml`.

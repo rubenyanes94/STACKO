@@ -5,7 +5,7 @@ import { faGithub, faLinkedin, faXTwitter, faMedium } from '@fortawesome/free-br
 export const site = {
   name: 'STACKO',
   founder: 'Ruben Yanes',
-  email: 'rubeny.dev@gmail.com',
+  email: 'contact@stackolabs.com',
   phone: '+58 414-0180311',
   whatsapp: '584140180311',
   socials: [
