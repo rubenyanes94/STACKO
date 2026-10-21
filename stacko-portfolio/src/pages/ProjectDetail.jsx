@@ -6,16 +6,14 @@ import { faArrowLeft, faArrowRight, faArrowUpRightFromSquare, faCheck } from '@f
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useCopy } from '../hooks/useCopy';
 import { projects, getProjectBySlug } from '../data/projects';
-import { usePageMeta } from '../hooks/usePageMeta';
 import ProjectMedia from '../components/ProjectMedia.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import NotFound from './NotFound.jsx';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const { t, v, lang, isDevMode } = useCopy();
+  const { t, v, lang, isDevMode, to } = useCopy();
   const project = getProjectBySlug(slug, lang);
-  usePageMeta(project ? project.title : t('meta.notFoundTitle'), project?.business.summary);
 
   if (!project) return <NotFound />;
 
@@ -28,7 +26,7 @@ const ProjectDetail = () => {
       <section className="grid-bg" style={{ paddingBlock: 'clamp(3rem, 7vw, 5rem) 3rem' }}>
         <Container>
           <div className="mb-4">
-            <Link to="/projects" className="link-arrow small border-0">
+            <Link to={to('projects')} className="link-arrow small border-0">
               <FontAwesomeIcon icon={faArrowLeft} /> {v('detail.back')}
             </Link>
           </div>
@@ -113,7 +111,7 @@ const ProjectDetail = () => {
 
           {next && next.slug !== project.slug && (
             <Link
-              to={`/projects/${next.slug}`}
+              to={to('project', { slug: next.slug })}
               className="d-flex justify-content-between align-items-center mt-5 pt-5 text-decoration-none"
               style={{ borderTop: '1px solid var(--border)', color: 'var(--text)' }}
             >

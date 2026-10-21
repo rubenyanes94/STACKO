@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
 
-export const ThemeContext = createContext({ isDevMode: true, toggleTheme: () => {} });
+export const ThemeContext = createContext({ isDevMode: false, toggleTheme: () => {} });
 
 export const useTheme = () => useContext(ThemeContext);

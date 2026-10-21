@@ -1,7 +1,8 @@
 import { createContext, useContext } from 'react';
 import { translations } from '../i18n/translations';
+import { LANGUAGES, DEFAULT_LANG, pathFor } from '../i18n/routes';
 
-export const LANGUAGES = ['es', 'en'];
+export { LANGUAGES };
 
 const resolve = (dictionary, key) => key.split('.').reduce((node, part) => node?.[part], dictionary);
 
@@ -13,9 +14,10 @@ export const translate = (lang, key, vars) => {
 };
 
 export const LanguageContext = createContext({
-  lang: 'en',
+  lang: DEFAULT_LANG,
   setLang: () => {},
-  t: (key, vars) => translate('en', key, vars),
+  t: (key, vars) => translate(DEFAULT_LANG, key, vars),
+  to: (name, params) => pathFor(name, DEFAULT_LANG, params),
 });
 
 export const useLanguage = () => useContext(LanguageContext);

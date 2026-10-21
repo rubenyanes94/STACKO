@@ -505,6 +505,18 @@ body[data-theme='dev'] .nav-link-stk {
   font-size: 1.15rem;
 }
 
+.service-link {
+  color: var(--text);
+  text-decoration: none;
+}
+.service-link:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.service-link:hover .link-arrow svg {
+  transform: translateX(4px);
+}
+
 /* ---------- Projects ---------- */
 .project-card {
   overflow: hidden;
@@ -971,6 +983,59 @@ body[data-theme='dev'] .nav-link-stk {
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 1rem;
+}
+
+/* ---------- Language suggestion ---------- */
+.lang-suggestion {
+  position: fixed;
+  left: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 1040;
+  max-width: calc(100% - 7rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.35);
+  font-size: 0.875rem;
+  animation: fadeIn 0.3s ease-out;
+}
+.lang-suggestion-close {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+/* ---------- Service page ---------- */
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.check-list li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+}
+.check-list svg {
+  flex-shrink: 0;
+}
+.problem-item {
+  padding: 1.5rem;
+  border-left: 2px solid var(--border-strong);
+  background: var(--bg-elev);
+  height: 100%;
 }
 
 /* ---------- WhatsApp floating button ---------- */

@@ -8,7 +8,7 @@ import { site } from '../data/site';
 import Reveal from './Reveal.jsx';
 
 const AboutMe = () => {
-  const { t, v } = useCopy();
+  const { t, v, section } = useCopy();
   const manifesto = t('about.manifesto');
 
   return (
@@ -53,7 +53,7 @@ const AboutMe = () => {
               </div>
 
               <div className="d-flex flex-wrap align-items-center gap-4">
-                <Link to="/#contact" className="btn-stk">
+                <Link to={section('contact')} className="btn-stk">
                   {t('about.cta')} <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
                 <div className="d-flex gap-3 fs-5">

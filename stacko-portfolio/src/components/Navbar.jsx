@@ -6,15 +6,16 @@ import { useCopy } from '../hooks/useCopy';
 import ThemeToggle from './ThemeToggle.jsx';
 import LanguageToggle from './LanguageToggle.jsx';
 
+// `page`: página propia (NavLink marca la activa). `section`: ancla dentro de la home.
 const links = [
-  { to: '/projects', key: 'nav.work', route: true },
-  { to: '/ai-agents', key: 'nav.agents', route: true },
-  { to: '/#services', key: 'nav.services' },
-  { to: '/#about', key: 'nav.about' },
+  { page: 'projects', key: 'nav.work' },
+  { page: 'agents', key: 'nav.agents' },
+  { section: 'services', key: 'nav.services' },
+  { section: 'about', key: 'nav.about' },
 ];
 
 const Navbar = () => {
-  const { t, v } = useCopy();
+  const { t, v, to, section } = useCopy();
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname, hash } = useLocation();
 
@@ -27,9 +28,9 @@ const Navbar = () => {
 
   const renderLinks = () =>
     links.map((link) => {
-      const LinkComponent = link.route ? NavLink : Link;
+      const LinkComponent = link.page ? NavLink : Link;
       return (
-        <LinkComponent key={link.to} to={link.to} className="nav-link-stk">
+        <LinkComponent key={link.key} to={link.page ? to(link.page) : section(link.section)} className="nav-link-stk">
           {v(link.key)}
         </LinkComponent>
       );
@@ -39,7 +40,7 @@ const Navbar = () => {
     <>
       <nav className="nav-stk fixed-top d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
-          <Link to="/" className="brand" aria-label="STACKO home">
+          <Link to={to('home')} className="brand" aria-label="STACKO home">
             STACKO<span className="brand-cursor" aria-hidden="true" />
           </Link>
 
@@ -49,7 +50,7 @@ const Navbar = () => {
               <LanguageToggle />
               <ThemeToggle />
             </div>
-            <Link to="/#contact" className="btn-stk py-2 px-3">
+            <Link to={section('contact')} className="btn-stk py-2 px-3">
               {v('nav.cta')}
             </Link>
           </div>
@@ -75,7 +76,7 @@ const Navbar = () => {
           {renderLinks()}
           <div className="pt-4 mt-2 d-flex flex-column gap-4" style={{ borderTop: '1px solid var(--border)' }}>
             <ThemeToggle />
-            <Link to="/#contact" className="btn-stk">
+            <Link to={section('contact')} className="btn-stk">
               {t('nav.cta.business')}
             </Link>
           </div>

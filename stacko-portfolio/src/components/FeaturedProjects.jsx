@@ -10,7 +10,7 @@ import Reveal from './Reveal.jsx';
 
 // Layout bento: el primer proyecto destacado ocupa todo el ancho y el resto va en columnas.
 const FeaturedProjects = () => {
-  const { t, v, lang } = useCopy();
+  const { t, v, lang, to } = useCopy();
   const [hero, ...rest] = getProjects(lang).filter((project) => project.featured);
 
   return (
@@ -21,7 +21,7 @@ const FeaturedProjects = () => {
             <div className="eyebrow">{v('featured.eyebrow')}</div>
             <h2 className="heading-stk mb-0">{t('featured.title')}</h2>
           </div>
-          <Link to="/projects" className="link-arrow">
+          <Link to={to('projects')} className="link-arrow">
             {t('featured.all')} <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>

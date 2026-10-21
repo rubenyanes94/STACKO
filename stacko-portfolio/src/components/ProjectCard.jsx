@@ -8,9 +8,9 @@ import ProjectCover from './ProjectCover.jsx';
 
 // `project` debe venir ya localizado (getProjects / getProjectBySlug). `large` = card horizontal destacada.
 const ProjectCard = ({ project, large = false }) => {
-  const { t, v, isDevMode } = useCopy();
+  const { t, v, isDevMode, to } = useCopy();
   const cardRef = useRef(null);
-  const url = `/projects/${project.slug}`;
+  const url = to('project', { slug: project.slug });
   const summary = isDevMode ? project.tech.summary : project.business.summary;
   const keyPoint = isDevMode ? project.tech.highlights[0] : project.business.outcomes[0];
   const tags = isDevMode ? project.tech.stack : project.business.tags;

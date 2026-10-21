@@ -5,17 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCopy } from '../hooks/useCopy';
 import { site, whatsappLink } from '../data/site';
 import { projects } from '../data/projects';
+import { services } from '../data/services';
 
 const Footer = () => {
-  const { t, v } = useCopy();
+  const { t, v, to, section } = useCopy();
   const year = new Date().getFullYear();
 
   return (
     <footer className="footer-stk">
       <Container>
         <Row className="gy-5">
-          <Col lg={4}>
-            <Link to="/" className="brand d-inline-block mb-3">
+          <Col lg={3}>
+            <Link to={to('home')} className="brand d-inline-block mb-3">
               STACKO<span className="brand-cursor" aria-hidden="true" />
             </Link>
             <p className="text-muted-stk mb-4" style={{ maxWidth: '22rem' }}>
@@ -27,28 +28,39 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col xs={6} lg={2}>
-            <div className="footer-title">{t('footer.company')}</div>
-            <ul className="list-unstyled d-grid gap-2 m-0">
-              <li><Link to="/projects">{t('nav.work.business')}</Link></li>
-              <li><Link to="/ai-agents">{t('nav.agents.business')}</Link></li>
-              <li><Link to="/#services">{t('nav.services.business')}</Link></li>
-              <li><Link to="/#about">{t('nav.about.business')}</Link></li>
-            </ul>
-          </Col>
-
           <Col xs={6} lg={3}>
-            <div className="footer-title">{t('footer.cases')}</div>
+            <div className="footer-title">{t('footer.services')}</div>
             <ul className="list-unstyled d-grid gap-2 m-0">
-              {projects.filter((project) => project.featured).slice(0, 4).map((project) => (
-                <li key={project.slug}>
-                  <Link to={`/projects/${project.slug}`}>{project.title}</Link>
+              {services.map((service) => (
+                <li key={service.id}>
+                  <Link to={to(service.page.name, service.page.params)}>{t(`services.items.${service.id}.title`)}</Link>
                 </li>
               ))}
             </ul>
           </Col>
 
-          <Col lg={3}>
+          <Col xs={6} lg={2}>
+            <div className="footer-title">{t('footer.company')}</div>
+            <ul className="list-unstyled d-grid gap-2 m-0">
+              <li><Link to={to('projects')}>{t('nav.work.business')}</Link></li>
+              <li><Link to={to('agents')}>{t('nav.agents.business')}</Link></li>
+              <li><Link to={section('services')}>{t('nav.services.business')}</Link></li>
+              <li><Link to={section('about')}>{t('nav.about.business')}</Link></li>
+            </ul>
+          </Col>
+
+          <Col xs={6} lg={2}>
+            <div className="footer-title">{t('footer.cases')}</div>
+            <ul className="list-unstyled d-grid gap-2 m-0">
+              {projects.filter((project) => project.featured).slice(0, 4).map((project) => (
+                <li key={project.slug}>
+                  <Link to={to('project', { slug: project.slug })}>{project.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </Col>
+
+          <Col xs={6} lg={2}>
             <div className="footer-title">{t('footer.contact')}</div>
             <ul className="list-unstyled d-grid gap-2 mb-4">
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>

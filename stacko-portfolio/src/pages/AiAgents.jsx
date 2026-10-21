@@ -13,7 +13,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useCopy } from '../hooks/useCopy';
 import { getProjectBySlug } from '../data/projects';
-import { usePageMeta } from '../hooks/usePageMeta';
 import Reveal from '../components/Reveal.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
 import CtaBand from '../components/CtaBand.jsx';
@@ -24,10 +23,9 @@ const useCaseIcons = [faComments, faHeadset, faBook, faFileInvoice, faCalendarCh
 const stack = ['Claude API', 'OpenAI API', 'NVIDIA', 'OpenClaw', 'Python', 'FastAPI', 'React', 'PostgreSQL', 'WhatsApp Business API'];
 
 const AiAgents = () => {
-  const { t, v, lang, isDevMode } = useCopy();
+  const { t, v, lang, isDevMode, to, section } = useCopy();
   const caseStudy = getProjectBySlug('aks-academy', lang);
   const [titleStart, titleOutline, titleEnd] = t('agents.title');
-  usePageMeta(t('meta.agentsTitle'), t('meta.agentsDescription'));
 
   return (
     <>
@@ -39,7 +37,7 @@ const AiAgents = () => {
           </h1>
           <p className="lead-stk mb-5">{v('agents.lead')}</p>
           <div className="d-flex flex-wrap gap-3">
-            <Link to="/#contact" className="btn-stk">
+            <Link to={section('contact')} className="btn-stk">
               {t('agents.primary')} <FontAwesomeIcon icon={faArrowRight} />
             </Link>
             <a href="#use-cases" className="btn-stk-outline">{t('agents.secondary')}</a>
@@ -103,7 +101,7 @@ const AiAgents = () => {
                 <div className="eyebrow">{t('agents.caseEyebrow')}</div>
                 <h2 className="heading-stk mb-4">{t('agents.caseTitle')}</h2>
                 <p className="text-muted-stk mb-4">{caseStudy.business.challenge}</p>
-                <Link to={`/projects/${caseStudy.slug}`} className="link-arrow">
+                <Link to={to('project', { slug: caseStudy.slug })} className="link-arrow">
                   {t('agents.caseLink')} <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
               </Col>

@@ -3,16 +3,10 @@
  * Para añadir un texto: crea la misma clave en `en` y `es` y úsala con t('seccion.clave').
  * `{variable}` se reemplaza con t('clave', { variable: valor }).
  */
-export const translations = {
+import { seoContent } from './seo-content';
+
+const base = {
   en: {
-    meta: {
-      homeDescription: "STACKO is Venezuela's first AI-specialized software company. We build AI agents, automation and high-performance web platforms that make businesses grow.",
-      projectsTitle: 'Work & Case Studies',
-      projectsDescription: 'AI agents, SaaS platforms, e-commerce and high-performance websites built by STACKO.',
-      agentsTitle: 'AI Agents for Business',
-      agentsDescription: 'Custom AI agents that sell, support customers and automate operations 24/7. Built by STACKO in Venezuela.',
-      notFoundTitle: 'Page not found',
-    },
     site: {
       tagline: "Venezuela's first AI-specialized software company",
       location: 'Venezuela · Serving clients worldwide',
@@ -30,10 +24,10 @@ export const translations = {
     toggles: { view: 'Choose site view', dev: 'DEV', business: 'BUSINESS', language: 'Choose language' },
     categories: { ai: 'AI & Automation', saas: 'SaaS Platform', ecommerce: 'E-commerce', web: 'Web Performance' },
     hero: {
-      eyebrow: { dev: 'stacko --mode=ai-first', business: "Venezuela's first AI-specialized software company" },
+      eyebrow: { dev: 'stacko --mode=ai-first', business: 'AI & software development company · Venezuela' },
       title: {
         dev: ['We ship AI agents ', '&', ' software that runs your business.'],
-        business: ['Your business, ', 'powered', ' by AI.'],
+        business: ['Artificial intelligence that ', 'sells, automates', ' and grows your business.'],
       },
       lead: {
         dev: 'LLM agents, automation pipelines and production-grade web platforms. React, Python, FastAPI and the latest models from Anthropic, OpenAI and NVIDIA — shipped in record time.',
@@ -68,6 +62,7 @@ export const translations = {
       title: ['AI is not a feature for us.', 'It’s the whole company.'],
       text: 'Every project starts from one question: what can AI do here that saves time or makes money? Then we build the software around it.',
       link: 'Explore our AI agents',
+      more: 'Learn more',
       items: {
         'ai-agents': {
           title: 'AI Agents & Assistants',
@@ -79,8 +74,13 @@ export const translations = {
           dev: 'Event-driven pipelines, API orchestration and AI steps that remove manual work end to end.',
           business: 'We find the repetitive tasks slowing your team down and make them run on their own.',
         },
-        platforms: {
-          title: 'Web Platforms & SaaS',
+        sales: {
+          title: 'Sales Automation',
+          dev: 'Conversational agents wired to WhatsApp, CRM and payments to qualify, quote and close.',
+          business: 'Answer, qualify and follow up with every lead instantly, so no opportunity goes cold.',
+        },
+        software: {
+          title: 'Custom Software Development',
           dev: 'Production-grade React front-ends and Python/Node back-ends, built for performance and scale.',
           business: 'Websites, stores and internal platforms that look world-class and convert visitors into clients.',
         },
@@ -171,6 +171,7 @@ export const translations = {
       description: 'AI agents, automation and software that make businesses grow.',
       status: { dev: 'status: accepting_new_projects', business: 'Currently accepting new projects' },
       company: 'Company',
+      services: 'Services',
       cases: 'Case studies',
       contact: 'Contact',
       built: 'Built in Venezuela, delivered worldwide.',
@@ -251,14 +252,6 @@ export const translations = {
   },
 
   es: {
-    meta: {
-      homeDescription: 'STACKO es la primera empresa venezolana especializada en inteligencia artificial. Creamos agentes de IA, automatizaciones y plataformas web de alto rendimiento que hacen crecer tu negocio.',
-      projectsTitle: 'Proyectos y casos de éxito',
-      projectsDescription: 'Agentes de IA, plataformas SaaS, e-commerce y sitios web de alto rendimiento desarrollados por STACKO.',
-      agentsTitle: 'Agentes de IA para empresas',
-      agentsDescription: 'Agentes de IA a la medida que venden, atienden clientes y automatizan operaciones 24/7. Hechos por STACKO en Venezuela.',
-      notFoundTitle: 'Página no encontrada',
-    },
     site: {
       tagline: 'La primera empresa venezolana especializada en IA',
       location: 'Venezuela · Clientes en toda Latinoamérica y el mundo',
@@ -276,10 +269,10 @@ export const translations = {
     toggles: { view: 'Elegir vista del sitio', dev: 'DEV', business: 'NEGOCIO', language: 'Elegir idioma' },
     categories: { ai: 'IA y Automatización', saas: 'Plataforma SaaS', ecommerce: 'E-commerce', web: 'Rendimiento Web' },
     hero: {
-      eyebrow: { dev: 'stacko --modo=ia-primero', business: 'La primera empresa venezolana especializada en IA' },
+      eyebrow: { dev: 'stacko --modo=ia-primero', business: 'Empresa de IA y desarrollo de software · Venezuela' },
       title: {
         dev: ['Creamos agentes de IA ', '&', ' software que hacen funcionar tu negocio.'],
-        business: ['Tu negocio, ', 'impulsado', ' por IA.'],
+        business: ['Inteligencia artificial que ', 'vende, automatiza', ' y hace crecer tu empresa.'],
       },
       lead: {
         dev: 'Agentes LLM, pipelines de automatización y plataformas web listas para producción. React, Python, FastAPI y los modelos más recientes de Anthropic, OpenAI y NVIDIA, entregados en tiempo récord.',
@@ -314,6 +307,7 @@ export const translations = {
       title: ['Para nosotros la IA no es un extra.', 'Es toda la empresa.'],
       text: 'Todo proyecto empieza con una pregunta: ¿qué puede hacer la IA aquí para ahorrar tiempo o generar dinero? Luego construimos el software a su alrededor.',
       link: 'Conoce nuestros agentes de IA',
+      more: 'Ver servicio',
       items: {
         'ai-agents': {
           title: 'Agentes y asistentes de IA',
@@ -325,8 +319,13 @@ export const translations = {
           dev: 'Pipelines por eventos, orquestación de APIs y pasos con IA que eliminan el trabajo manual de punta a punta.',
           business: 'Encontramos las tareas repetitivas que frenan a tu equipo y hacemos que funcionen solas.',
         },
-        platforms: {
-          title: 'Plataformas web y SaaS',
+        sales: {
+          title: 'Automatización de ventas',
+          dev: 'Agentes conversacionales conectados a WhatsApp, CRM y pagos para calificar, cotizar y cerrar.',
+          business: 'Responde, califica y da seguimiento a cada cliente potencial al instante, para que ninguna oportunidad se enfríe.',
+        },
+        software: {
+          title: 'Desarrollo de software a la medida',
           dev: 'Front-ends en React y back-ends en Python/Node listos para producción, pensados para rendimiento y escala.',
           business: 'Sitios web, tiendas y plataformas internas de nivel mundial que convierten visitantes en clientes.',
         },
@@ -417,6 +416,7 @@ export const translations = {
       description: 'Agentes de IA, automatización y software que hacen crecer los negocios.',
       status: { dev: 'status: aceptando_proyectos', business: 'Aceptando nuevos proyectos' },
       company: 'Empresa',
+      services: 'Servicios',
       cases: 'Casos de éxito',
       contact: 'Contacto',
       built: 'Hecho en Venezuela, entregado al mundo.',
@@ -495,4 +495,9 @@ export const translations = {
       work: 'Ver proyectos',
     },
   },
+};
+
+export const translations = {
+  en: { ...base.en, ...seoContent.en },
+  es: { ...base.es, ...seoContent.es },
 };

@@ -10,7 +10,7 @@ import { projects } from '../data/projects';
 const deliverableIcons = [faRobot, faGears, faLayerGroup];
 
 const Hero = () => {
-  const { t, v, lang, isDevMode } = useCopy();
+  const { t, v, lang, isDevMode, to, section } = useCopy();
   const [titleStart, titleOutline, titleEnd] = v('hero.title');
   const statLabels = t('hero.stats');
   const stats = [`${projects.length}+`, '24/7', t('hero.statDays'), 'ES · EN'];
@@ -20,7 +20,8 @@ const Hero = () => {
       <Container>
         <Row className="align-items-center gy-5">
           <Col lg={7}>
-            <AnimatePresence mode="wait">
+            {/* initial={false}: el titular se ve desde el primer pintado (mejor LCP) y solo anima al cambiar de vista */}
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={`${lang}-${isDevMode}`}
                 initial={{ opacity: 0, y: 16 }}
@@ -34,10 +35,10 @@ const Hero = () => {
                 </h1>
                 <p className="lead-stk mb-5">{v('hero.lead')}</p>
                 <div className="d-flex flex-wrap gap-3">
-                  <Link to="/#contact" className="btn-stk">
+                  <Link to={section('contact')} className="btn-stk">
                     {v('hero.primary')} <FontAwesomeIcon icon={faArrowRight} />
                   </Link>
-                  <Link to="/projects" className="btn-stk-outline">
+                  <Link to={to('projects')} className="btn-stk-outline">
                     {v('hero.secondary')}
                   </Link>
                 </div>
@@ -86,7 +87,7 @@ const Hero = () => {
                     </div>
                   </div>
                 ))}
-                <Link to="/ai-agents" className="link-arrow small">
+                <Link to={to('agents')} className="link-arrow small">
                   {t('hero.agentsLink')} <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
               </div>

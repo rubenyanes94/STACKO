@@ -1,3 +1,9 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/projects", "destination": "/proyectos", "permanent": true },
+    { "source": "/projects/:slug", "destination": "/proyectos/:slug", "permanent": true },
+    { "source": "/ai-agents", "destination": "/agentes-ia", "permanent": true }
+  ]
 }

@@ -1,32 +1,38 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { LanguageContext, LANGUAGES, translate } from './language';
+import React, { useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { LanguageContext, translate } from './language';
+import { langFromPath, matchPath, pathFor } from '../i18n/routes';
 
-const STORAGE_KEY = 'stacko-lang';
+export const LANG_STORAGE_KEY = 'stacko-lang';
 
-// Prioridad: elección guardada del visitante → idioma del navegador (es-VE, es-MX… → es) → inglés.
-const readInitialLang = () => {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (LANGUAGES.includes(saved)) return saved;
-  } catch {
-    // Storage no disponible: seguimos con el idioma del navegador.
-  }
-  return navigator.language?.toLowerCase().startsWith('es') ? 'es' : 'en';
-};
-
+/**
+ * El idioma lo define la URL (/ → español, /en → inglés), así cada idioma tiene sus propias páginas indexables.
+ * Cambiar de idioma navega a la misma página en el otro idioma y recuerda la preferencia.
+ */
 export const LanguageProvider = ({ children }) => {
-  const [lang, setLang] = useState(readInitialLang);
+  const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
+  const lang = langFromPath(pathname);
 
-  useEffect(() => {
-    document.documentElement.lang = lang;
-    try {
-      localStorage.setItem(STORAGE_KEY, lang);
-    } catch {
-      // Storage bloqueado: el idioma sigue funcionando en memoria.
-    }
-  }, [lang]);
+  const value = useMemo(() => {
+    const setLang = (next) => {
+      try {
+        localStorage.setItem(LANG_STORAGE_KEY, next);
+      } catch {
+        // Storage bloqueado: igual cambiamos de idioma.
+      }
+      if (next === lang) return;
+      const { name, params } = matchPath(pathname);
+      navigate((name ? pathFor(name, next, params) : pathFor('home', next)) + hash);
+    };
 
-  const value = useMemo(() => ({ lang, setLang, t: (key, vars) => translate(lang, key, vars) }), [lang]);
+    return {
+      lang,
+      setLang,
+      t: (key, vars) => translate(lang, key, vars),
+      to: (name, params) => pathFor(name, lang, params),
+    };
+  }, [lang, pathname, hash, navigate]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };

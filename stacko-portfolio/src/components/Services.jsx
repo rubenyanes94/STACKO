@@ -7,8 +7,9 @@ import { useCopy } from '../hooks/useCopy';
 import { services } from '../data/services';
 import Reveal from './Reveal.jsx';
 
+// Cada tarjeta lleva a la landing de su servicio (enlazado interno: clave para el SEO de esas páginas).
 const Services = () => {
-  const { t, v } = useCopy();
+  const { t, v, to } = useCopy();
   const [titleLine1, titleLine2] = t('services.title');
 
   return (
@@ -29,25 +30,22 @@ const Services = () => {
 
         <Row className="g-4">
           {services.map((service, idx) => (
-            <Col key={service.id} md={6} lg={3}>
-              <Reveal delay={idx * 0.08} className="h-100">
-                <div className="card-stk service-card">
+            <Col key={service.id} md={6} lg={idx === 0 ? 8 : 4}>
+              <Reveal delay={(idx % 3) * 0.08} className="h-100">
+                <Link to={to(service.page.name, service.page.params)} className="card-stk service-card service-link d-flex flex-column">
                   <div className="service-icon">
                     <FontAwesomeIcon icon={service.icon} />
                   </div>
                   <h3 className="h5 fw-bold mb-3">{t(`services.items.${service.id}.title`)}</h3>
-                  <p className="text-muted-stk small mb-0">{v(`services.items.${service.id}`)}</p>
-                </div>
+                  <p className="text-muted-stk small mb-4">{v(`services.items.${service.id}`)}</p>
+                  <span className="link-arrow small mt-auto align-self-start">
+                    {t('services.more')} <FontAwesomeIcon icon={faArrowRight} />
+                  </span>
+                </Link>
               </Reveal>
             </Col>
           ))}
         </Row>
-
-        <div className="mt-5">
-          <Link to="/ai-agents" className="link-arrow">
-            {t('services.link')} <FontAwesomeIcon icon={faArrowRight} />
-          </Link>
-        </div>
       </Container>
     </section>
   );

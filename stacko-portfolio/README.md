@@ -9,7 +9,8 @@ React 18 + Vite + React-Bootstrap + Framer Motion.
 npm install
 npm run dev      # servidor local
 npm run lint     # ESLint
-npm run build    # build de producción en dist/
+npm run build    # build + prerender: un HTML estático por página en dist/
+npm run preview  # sirve dist/ como en producción (http://localhost:4173)
 ```
 
 ## Estructura
@@ -28,9 +29,20 @@ src/
   index.css       ← sistema de diseño (tokens por vista)
 ```
 
+## SEO
+
+- **URLs por idioma** (`src/i18n/routes.js`): español en la raíz (`/proyectos`, `/agentes-ia`,
+  `/servicios/automatizacion-de-ventas`…) e inglés en `/en/...`, enlazadas con `hreflang`.
+- **Prerender (SSG)**: `npm run build` genera el HTML de cada URL con contenido, title, description, canonical,
+  Open Graph y JSON-LD ya incluidos (`scripts/prerender.mjs`). Google no necesita ejecutar JavaScript.
+- **Metadatos**: todos salen de `src/seo/head.js`; los títulos y descripciones están en `src/i18n/seo-content.js`.
+- **Landings de servicio**: una por búsqueda objetivo, contenido en `servicePages` de `seo-content.js`.
+- **sitemap.xml y robots.txt** se generan en el build. **Requieren `VITE_SITE_URL`** (dominio de producción).
+- Al añadir un proyecto o servicio, su página, su entrada en el sitemap y sus metadatos se generan solos.
+
 ## Idiomas (ES / EN)
 
-- El idioma se detecta del navegador (cualquier `es-*` → español) y el visitante puede cambiarlo en el navbar.
+- El idioma lo define la URL. Si el navegador del visitante está en otro idioma se le sugiere cambiar (sin redirigir).
 - Los textos de la interfaz están en `src/i18n/translations.js`: misma clave en `en` y `es`.
 - Los textos de cada proyecto están en `content.en` / `content.es` dentro de `projects.js`.
 - Si falta una traducción, se muestra la versión en inglés.
@@ -75,5 +87,7 @@ Sin esa variable, el formulario abre el cliente de correo del visitante con el m
 
 ## Despliegue
 
-Es una SPA con rutas (`/projects/hidoc`, `/ai-agents`). El hosting debe redirigir todas las rutas a `index.html`
-(ya incluido: `vercel.json` para Vercel y `public/_redirects` para Netlify; en otros hostings configura un rewrite `/* → /index.html`).
+1. Define `VITE_SITE_URL` (y `VITE_FORMSPREE_ID`) en las variables de entorno del hosting.
+2. Comando de build: `npm run build`; carpeta de salida: `dist`.
+3. Ya incluido: `vercel.json` (URLs limpias y redirecciones 301 de las URLs antiguas) y `public/_redirects` (Netlify).
+4. Tras publicar: da de alta el dominio en Google Search Console y envía `https://tu-dominio/sitemap.xml`.

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useCopy } from '../hooks/useCopy';
 import { getProjects, categoryKeys } from '../data/projects';
-import { usePageMeta } from '../hooks/usePageMeta';
 import ProjectCard from '../components/ProjectCard.jsx';
 import Reveal from '../components/Reveal.jsx';
 import CtaBand from '../components/CtaBand.jsx';
@@ -10,7 +9,6 @@ import CtaBand from '../components/CtaBand.jsx';
 const Projects = () => {
   const { t, v, lang } = useCopy();
   const [filter, setFilter] = useState('all');
-  usePageMeta(t('meta.projectsTitle'), t('meta.projectsDescription'));
 
   const projects = getProjects(lang);
   // Solo se muestran como filtros las categorías que tienen al menos un proyecto.

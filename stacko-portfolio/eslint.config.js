@@ -26,4 +26,9 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^([A-Z_]|motion$)' }],
     },
   },
+  {
+    // Entrada del prerender: exporta funciones, no componentes
+    files: ['src/entry-server.jsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
 ])
