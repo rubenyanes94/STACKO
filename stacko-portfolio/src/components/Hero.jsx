@@ -1,133 +1,107 @@
-import React, { useContext } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { ThemeContext } from '../context/ThemeContext';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRobot, faBolt, faMicrochip, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faRobot, faGears, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { useCopy } from '../hooks/useCopy';
+import { projects } from '../data/projects';
+
+const deliverableIcons = [faRobot, faGears, faLayerGroup];
 
 const Hero = () => {
-  const { isDevMode } = useContext(ThemeContext);
-  const heroBg = 'bg-white text-dark';
-  const textMuted = 'text-dark';
+  const { t, v, lang, isDevMode, to, section } = useCopy();
+  const [titleStart, titleOutline, titleEnd] = v('hero.title');
+  const statLabels = t('hero.stats');
+  const stats = [`${projects.length}+`, '24/7', t('hero.statDays'), 'ES · EN'];
 
   return (
-    <section className={`hero-section d-flex align-items-center transition-all ${heroBg}`} style={{ minHeight: '100vh', paddingTop: '80px', transition: 'background-color 0.4s ease, color 0.4s ease' }}>
+    <section className="hero grid-bg">
       <Container>
-        <Row className="align-items-center">
-          <Col lg={6}>
-            <AnimatePresence mode="wait">
-              {isDevMode ? (
-                <motion.div
-                  key="dev-hero"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h5 className={`${textMuted} mb-3 fw-bold font-monospace small opacity-75`}>&gt; init_ai_agents() --speed=max</h5>
-                  <h1 className="display-4 fw-bold mb-4 font-monospace text-dark" style={{ letterSpacing: '-1px' }}>
-                    Building <span className="text-decoration-underline">AI-Powered</span> Business Ecosystems.
-                  </h1>
-                  <p className={`lead mb-5 ${textMuted} font-monospace opacity-75`} style={{ fontSize: '1.1rem' }}>
-                    Deploying high-performance web architectures in record time using top-tier stacks (React, TypeScript, Python, FastAPI). 
-                    We engineer custom AI Agents and autonomous workflows to skyrocket your productivity.
-                  </p>
-                  <div className="d-flex gap-3 mb-3">
-                    <Button variant="outline-dark" className="px-4 py-3 fw-bold font-monospace rounded-0" style={{ borderWidth: '2px' }}>
-                      &gt; execute_projects()
-                    </Button>
-                    <Button variant="link" className="px-4 py-3 font-monospace rounded-0 text-dark text-decoration-none border border-dark">
-                      view_stack.md
-                    </Button>
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="corp-hero"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h5 className="text-uppercase mb-3 fw-bold small text-secondary" style={{ letterSpacing: '2px' }}>Next-Gen Automation</h5>
-                  <h1 className="display-4 fw-bolder mb-4 text-dark" style={{ letterSpacing: '-1px' }}>
-                    Supercharging Productivity with <span className="text-decoration-underline">AI Agents.</span>
-                  </h1>
-                  <p className="lead mb-5 text-secondary">
-                    We transform companies by automating complex operations. Delivering cutting-edge software and autonomous AI ecosystems in record time to maximize your efficiency and business growth.
-                  </p>
-                  <div className="d-flex gap-3 ">
-                    <Button variant="dark" className="px-5 py-3 fw-bold rounded-0 text-uppercase shadow-sm" style={{ letterSpacing: '1px' }}>
-                      Automate Now
-                    </Button>
-                    <Button variant="outline-dark" className="px-4 py-3 rounded-0 text-uppercase" style={{ letterSpacing: '1px' }}>
-                      Consultancy
-                    </Button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Col>
-          
-          <Col lg={6} className="d-none d-lg-block">
-            <AnimatePresence mode="wait">
+        <Row className="align-items-center gy-5">
+          <Col lg={7}>
+            {/* initial={false}: el titular se ve desde el primer pintado (mejor LCP) y solo anima al cambiar de vista */}
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
-                key={isDevMode ? 'dev-img' : 'corp-img'}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
-                className="ps-lg-5"
+                key={`${lang}-${isDevMode}`}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.4 }}
               >
-                {isDevMode ? (
-                  <div className="p-4 border border-dark rounded-3 bg-black text-white shadow-lg font-monospace" style={{ borderWidth: '2px' }}>
-                    <div className="d-flex gap-2 mb-4 pb-3 border-bottom" style={{ borderColor: '#333' }}>
-                      <div className="rounded-circle bg-white" style={{ width: 12, height: 12, opacity: 0.2 }}></div>
-                      <div className="rounded-circle bg-white" style={{ width: 12, height: 12, opacity: 0.5 }}></div>
-                      <div className="rounded-circle bg-white" style={{ width: 12, height: 12 }}></div>
-                    </div>
-                    <div className="small fw-medium" style={{ color: '#e5e7eb' }}>
-                      <p><span className="fw-bold text-white">class</span> StackoAIAgent:</p>
-                      <p className="ps-3">def __init__(self):</p>
-                      <p className="ps-4">self.core = <span className="fw-bold text-white">"LLM / Claude 3.5"</span></p>
-                      <p className="ps-4">self.stack = <span className="fw-bold text-white">["React", "FastAPI", "PostgreSQL"]</span></p>
-                      <p className="ps-4">self.delivery_time = <span className="fw-bold text-white">"Record Time"</span></p>
-                      <br/>
-                      <p className="ps-3">def optimize_business(self):</p>
-                      <p className="ps-4">return <span className="fw-bold text-white">"100% Processes Automated"</span></p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="shadow-lg bg-white p-5 border border-dark rounded-0">
-                    <div className="d-flex justify-content-between align-items-center mb-5 pb-3 border-bottom border-dark">
-                      <h6 className="m-0 fw-bolder text-uppercase" style={{ letterSpacing: '2px' }}>Impact Metrics</h6>
-                      <FontAwesomeIcon icon={faRobot} className="fs-4 text-dark" />
-                    </div>
-                    
-                    <div className="mb-4 d-flex align-items-center gap-4">
-                      <div className="bg-dark text-white p-3 d-flex justify-content-center align-items-center" style={{ width: '60px', height: '60px' }}>
-                        <FontAwesomeIcon icon={faBolt} className="fs-4" />
-                      </div>
-                      <div>
-                        <div className="small text-secondary text-uppercase fw-bold" style={{ letterSpacing: '1px' }}>AI Task Automation</div>
-                        <div className="fw-bolder fs-4 text-dark">+300% Efficiency</div>
-                      </div>
-                    </div>
-
-                    <div className="d-flex align-items-center gap-4">
-                      <div className="border border-dark text-dark p-3 d-flex justify-content-center align-items-center" style={{ width: '60px', height: '60px' }}>
-                        <FontAwesomeIcon icon={faClock} className="fs-4" />
-                      </div>
-                      <div>
-                        <div className="small text-secondary text-uppercase fw-bold" style={{ letterSpacing: '1px' }}>Delivery Time</div>
-                        <div className="fw-bolder fs-4 text-dark">Record Speed</div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <div className="eyebrow">{v('hero.eyebrow')}</div>
+                <h1 className="display-stk">
+                  {titleStart}<span className="text-outline">{titleOutline}</span>{titleEnd}
+                </h1>
+                <p className="lead-stk mb-5">{v('hero.lead')}</p>
+                <div className="d-flex flex-wrap gap-3">
+                  <Link to={section('contact')} className="btn-stk">
+                    {v('hero.primary')} <FontAwesomeIcon icon={faArrowRight} />
+                  </Link>
+                  <Link to={to('projects')} className="btn-stk-outline">
+                    {v('hero.secondary')}
+                  </Link>
+                </div>
               </motion.div>
             </AnimatePresence>
           </Col>
+
+          <Col lg={5} className="d-none d-md-block">
+            {isDevMode ? (
+              <div className="terminal" aria-hidden="true">
+                <div className="terminal-bar">
+                  <span /><span /><span />
+                  <small className="ms-2 text-secondary">stacko@prod: ~</small>
+                </div>
+                <div className="terminal-body" key={lang}>
+                  {t('hero.terminal').map((line, idx) => (
+                    <motion.div
+                      key={idx}
+                      className={line.className}
+                      initial={{ opacity: 0, x: -6 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 + idx * 0.35, duration: 0.25 }}
+                    >
+                      {line.text || ' '}
+                    </motion.div>
+                  ))}
+                  <span className="brand-cursor" style={{ background: '#e5e5e5' }} />
+                </div>
+              </div>
+            ) : (
+              <div className="card-stk p-4 p-xl-5" style={{ boxShadow: '0 30px 80px -30px rgba(0,0,0,0.25)' }}>
+                <div className="d-flex justify-content-between align-items-center pb-3 mb-4" style={{ borderBottom: '1px solid var(--border)' }}>
+                  <span className="fw-bold small text-uppercase" style={{ letterSpacing: '0.12em' }}>{t('hero.deliverTitle')}</span>
+                  <span className="d-flex align-items-center gap-2 small text-muted-stk">
+                    <span className="status-dot" /> {t('hero.available')}
+                  </span>
+                </div>
+                {t('hero.deliverables').map((item, idx) => (
+                  <div key={item.title} className="d-flex align-items-center gap-3 mb-4">
+                    <div className="service-icon mb-0">
+                      <FontAwesomeIcon icon={deliverableIcons[idx]} />
+                    </div>
+                    <div>
+                      <div className="fw-bold">{item.title}</div>
+                      <div className="small text-muted-stk">{item.text}</div>
+                    </div>
+                  </div>
+                ))}
+                <Link to={to('agents')} className="link-arrow small">
+                  {t('hero.agentsLink')} <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+              </div>
+            )}
+          </Col>
+        </Row>
+
+        <Row className="stat-strip gy-4">
+          {stats.map((value, idx) => (
+            <Col key={statLabels[idx]} xs={6} md={3}>
+              <div className="stat-value">{value}</div>
+              <div className="stat-label">{statLabels[idx]}</div>
+            </Col>
+          ))}
         </Row>
       </Container>
     </section>

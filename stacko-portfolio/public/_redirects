@@ -1,0 +1,4 @@
+/projects         /proyectos        301
+/projects/:slug   /proyectos/:slug  301
+/ai-agents        /agentes-ia       301
+/*                /404.html         404
