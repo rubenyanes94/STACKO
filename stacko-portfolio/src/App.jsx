@@ -1,30 +1,36 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { ThemeProvider } from './context/ThemeContext';
-import Navbar from './components/StackoNavbar.jsx'; 
-import Footer from './components/Footer.jsx';       
+import { ThemeProvider } from './context/ThemeContext.jsx';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
+import ScrollManager from './components/ScrollManager.jsx';
+import WhatsAppButton from './components/WhatsAppButton.jsx';
 import Home from './pages/Home.jsx';
-import Projects from './components/Projects.jsx'; 
-
-import './index.css';
+import Projects from './pages/Projects.jsx';
+import ProjectDetail from './pages/ProjectDetail.jsx';
+import AiAgents from './pages/AiAgents.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
-        
-        <div className="d-flex flex-column min-vh-100 w-100 overflow-hidden">
-          <Navbar/> 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-          </Routes>
+        <ScrollManager />
+        <div className="d-flex flex-column min-vh-100">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
+              <Route path="/ai-agents" element={<AiAgents />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
           <Footer />
-
         </div>
-
+        <WhatsAppButton />
       </BrowserRouter>
     </ThemeProvider>
   );
