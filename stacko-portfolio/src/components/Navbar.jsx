@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useTheme } from '../context/theme';
+import { useCopy } from '../hooks/useCopy';
 import ThemeToggle from './ThemeToggle.jsx';
+import LanguageToggle from './LanguageToggle.jsx';
 
 const links = [
-  { to: '/projects', dev: '~/work', business: 'Work', route: true },
-  { to: '/ai-agents', dev: '~/ai-agents', business: 'AI Agents', route: true },
-  { to: '/#services', dev: '~/services', business: 'Services' },
-  { to: '/#about', dev: '~/about', business: 'About' },
+  { to: '/projects', key: 'nav.work', route: true },
+  { to: '/ai-agents', key: 'nav.agents', route: true },
+  { to: '/#services', key: 'nav.services' },
+  { to: '/#about', key: 'nav.about' },
 ];
 
 const Navbar = () => {
-  const { isDevMode } = useTheme();
+  const { t, v } = useCopy();
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname, hash } = useLocation();
 
@@ -25,17 +26,14 @@ const Navbar = () => {
   }, [menuOpen]);
 
   const renderLinks = () =>
-    links.map((link) =>
-      link.route ? (
-        <NavLink key={link.to} to={link.to} className="nav-link-stk">
-          {isDevMode ? link.dev : link.business}
-        </NavLink>
-      ) : (
-        <Link key={link.to} to={link.to} className="nav-link-stk">
-          {isDevMode ? link.dev : link.business}
-        </Link>
-      )
-    );
+    links.map((link) => {
+      const LinkComponent = link.route ? NavLink : Link;
+      return (
+        <LinkComponent key={link.to} to={link.to} className="nav-link-stk">
+          {v(link.key)}
+        </LinkComponent>
+      );
+    });
 
   return (
     <>
@@ -45,24 +43,30 @@ const Navbar = () => {
             STACKO<span className="brand-cursor" aria-hidden="true" />
           </Link>
 
-          <div className="d-none d-lg-flex align-items-center gap-4 gap-xl-5">
+          <div className="d-none d-lg-flex align-items-center gap-4">
             {renderLinks()}
-            <ThemeToggle />
+            <div className="d-flex align-items-center gap-2">
+              <LanguageToggle />
+              <ThemeToggle />
+            </div>
             <Link to="/#contact" className="btn-stk py-2 px-3">
-              {isDevMode ? 'start_project()' : 'Start a project'}
+              {v('nav.cta')}
             </Link>
           </div>
 
-          <button
-            type="button"
-            className="d-lg-none btn border-0 p-2"
-            style={{ color: 'var(--text)' }}
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-          >
-            <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} size="lg" />
-          </button>
+          <div className="d-flex d-lg-none align-items-center gap-2">
+            <LanguageToggle />
+            <button
+              type="button"
+              className="btn border-0 p-2"
+              style={{ color: 'var(--text)' }}
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label={menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+              aria-expanded={menuOpen}
+            >
+              <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} size="lg" />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -72,7 +76,7 @@ const Navbar = () => {
           <div className="pt-4 mt-2 d-flex flex-column gap-4" style={{ borderTop: '1px solid var(--border)' }}>
             <ThemeToggle />
             <Link to="/#contact" className="btn-stk">
-              Start a project
+              {t('nav.cta.business')}
             </Link>
           </div>
         </div>

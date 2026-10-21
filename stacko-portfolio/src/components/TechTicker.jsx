@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../context/language';
 
 // `icon` es una clase de devicon; las herramientas sin icono se muestran solo con texto.
 const stack = [
@@ -19,11 +20,12 @@ const stack = [
 ];
 
 const TechTicker = () => {
+  const { t } = useLanguage();
   // Lista duplicada: la animación se desplaza un 50% y vuelve al inicio sin salto visible.
   const loop = [...stack, ...stack];
 
   return (
-    <div className="ticker" aria-label="Technologies we work with">
+    <div className="ticker" aria-label={t('ticker.label')}>
       <div className="ticker-track">
         {loop.map((tech, index) => (
           <div key={index} className="ticker-item" aria-hidden={index >= stack.length}>

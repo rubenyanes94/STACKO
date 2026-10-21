@@ -18,19 +18,37 @@ npm run build    # build de producción en dist/
 src/
   data/
     projects.js   ← proyectos (fuente única: home, /projects, casos de estudio)
-    services.js   ← servicios y pasos del proceso
-    site.js       ← email, WhatsApp, redes, ubicación
+    services.js   ← iconos de servicios (los textos están en i18n)
+    site.js       ← email, WhatsApp, redes
+  i18n/
+    translations.js ← todos los textos de la web en español e inglés
   pages/          ← Home, Projects, ProjectDetail (/projects/:slug), AiAgents, NotFound
   components/     ← secciones y piezas reutilizables
-  context/        ← vista DEV / BUSINESS (se recuerda entre visitas)
+  context/        ← vista DEV / BUSINESS e idioma ES / EN (ambos se recuerdan entre visitas)
   index.css       ← sistema de diseño (tokens por vista)
 ```
+
+## Idiomas (ES / EN)
+
+- El idioma se detecta del navegador (cualquier `es-*` → español) y el visitante puede cambiarlo en el navbar.
+- Los textos de la interfaz están en `src/i18n/translations.js`: misma clave en `en` y `es`.
+- Los textos de cada proyecto están en `content.en` / `content.es` dentro de `projects.js`.
+- Si falta una traducción, se muestra la versión en inglés.
 
 ## Añadir un proyecto
 
 1. Abre `src/data/projects.js` y agrega un objeto al array `projects` (el formato está documentado arriba del archivo).
-2. Con `featured: true` aparece en la home; siempre aparece en `/projects` y tiene su página `/projects/<slug>`.
-3. Si usas una categoría nueva, añádela a `categories` y el filtro aparece solo.
+2. Con `featured: true` aparece en la home. El **primer** destacado se muestra en grande (layout bento).
+3. Si usas una categoría nueva, añádela a `categoryKeys` y su nombre en `categories` de `translations.js`.
+
+### Portada de la card (cómo hacerla atractiva)
+
+- `accent`: color de marca del proyecto (fondo de la portada).
+- `media.cover`: captura principal, a 1440px de ancho, de la parte superior de la página (se muestra dentro de un navegador).
+- `media.hover`: segunda pantalla que aparece al pasar el mouse. Elige la que muestre el producto en acción (chat, dashboard…).
+- `media.mobile`: captura móvil (≈390×844) que aparece en un teléfono junto al navegador.
+- `media.preview`: clip `.mp4` de 5–10 s, sin sonido, menos de 2 MB. Se reproduce en hover en lugar de `hover`.
+- `links.label`: texto para la barra de URL si el dominio real no es presentable.
 
 ## Añadir el video de un aplicativo
 

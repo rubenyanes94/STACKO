@@ -6,13 +6,12 @@ import FeaturedProjects from '../components/FeaturedProjects.jsx';
 import Process from '../components/Process.jsx';
 import AboutMe from '../components/AboutMe.jsx';
 import Contact from '../components/Contact.jsx';
+import { useLanguage } from '../context/language';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const Home = () => {
-  usePageMeta(
-    null,
-    "STACKO is Venezuela's first AI-specialized software company. We build AI agents, automation and high-performance web platforms that make businesses grow."
-  );
+  const { t } = useLanguage();
+  usePageMeta(null, t('meta.homeDescription'));
 
   return (
     <>

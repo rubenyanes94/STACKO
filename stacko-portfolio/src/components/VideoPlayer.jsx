@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { useLanguage } from '../context/language';
 
 const embedUrl = ({ type, src }) =>
   type === 'vimeo'
@@ -14,6 +15,7 @@ const embedUrl = ({ type, src }) =>
  *   así la página no paga el peso del reproductor hasta que el usuario lo pide.
  */
 const VideoPlayer = ({ video, title }) => {
+  const { t } = useLanguage();
   const [playing, setPlaying] = useState(false);
 
   if (video.type === 'file') {
@@ -38,7 +40,7 @@ const VideoPlayer = ({ video, title }) => {
           allowFullScreen
         />
       ) : (
-        <button type="button" className="video-facade" onClick={() => setPlaying(true)} aria-label={`Play ${title} video`}>
+        <button type="button" className="video-facade" onClick={() => setPlaying(true)} aria-label={t('detail.play', { title })}>
           {poster && <img src={poster} alt="" loading="lazy" />}
           <span className="play-button">
             <FontAwesomeIcon icon={faPlay} />

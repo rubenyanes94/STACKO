@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTheme } from '../context/theme';
+import { useCopy } from '../hooks/useCopy';
 import { site, whatsappLink } from '../data/site';
-import { featuredProjects } from '../data/projects';
+import { projects } from '../data/projects';
 
 const Footer = () => {
-  const { isDevMode } = useTheme();
+  const { t, v } = useCopy();
   const year = new Date().getFullYear();
 
   return (
@@ -19,28 +19,28 @@ const Footer = () => {
               STACKO<span className="brand-cursor" aria-hidden="true" />
             </Link>
             <p className="text-muted-stk mb-4" style={{ maxWidth: '22rem' }}>
-              {site.tagline}. AI agents, automation and software that make businesses grow.
+              {t('site.tagline')}. {t('footer.description')}
             </p>
             <div className="d-flex align-items-center gap-2 small font-mono text-muted-stk">
               <span className="status-dot" />
-              {isDevMode ? 'status: accepting_new_projects' : 'Currently accepting new projects'}
+              {v('footer.status')}
             </div>
           </Col>
 
           <Col xs={6} lg={2}>
-            <div className="footer-title">Company</div>
+            <div className="footer-title">{t('footer.company')}</div>
             <ul className="list-unstyled d-grid gap-2 m-0">
-              <li><Link to="/projects">Work</Link></li>
-              <li><Link to="/ai-agents">AI Agents</Link></li>
-              <li><Link to="/#services">Services</Link></li>
-              <li><Link to="/#about">About</Link></li>
+              <li><Link to="/projects">{t('nav.work.business')}</Link></li>
+              <li><Link to="/ai-agents">{t('nav.agents.business')}</Link></li>
+              <li><Link to="/#services">{t('nav.services.business')}</Link></li>
+              <li><Link to="/#about">{t('nav.about.business')}</Link></li>
             </ul>
           </Col>
 
           <Col xs={6} lg={3}>
-            <div className="footer-title">Case studies</div>
+            <div className="footer-title">{t('footer.cases')}</div>
             <ul className="list-unstyled d-grid gap-2 m-0">
-              {featuredProjects.slice(0, 4).map((project) => (
+              {projects.filter((project) => project.featured).slice(0, 4).map((project) => (
                 <li key={project.slug}>
                   <Link to={`/projects/${project.slug}`}>{project.title}</Link>
                 </li>
@@ -49,11 +49,15 @@ const Footer = () => {
           </Col>
 
           <Col lg={3}>
-            <div className="footer-title">Contact</div>
+            <div className="footer-title">{t('footer.contact')}</div>
             <ul className="list-unstyled d-grid gap-2 mb-4">
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-              <li><a href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp {site.phone}</a></li>
-              <li className="text-muted-stk">{site.location}</li>
+              <li>
+                <a href={whatsappLink(t('site.whatsappMessage'))} target="_blank" rel="noopener noreferrer">
+                  WhatsApp {site.phone}
+                </a>
+              </li>
+              <li className="text-muted-stk">{t('site.location')}</li>
             </ul>
             <div className="d-flex gap-3 fs-5">
               {site.socials.map((social) => (
@@ -70,7 +74,7 @@ const Footer = () => {
           style={{ borderTop: '1px solid var(--border)' }}
         >
           <span>© {year} STACKO · {site.founder}</span>
-          <span>Built in Venezuela, delivered worldwide.</span>
+          <span>{t('footer.built')}</span>
         </div>
       </Container>
     </footer>
