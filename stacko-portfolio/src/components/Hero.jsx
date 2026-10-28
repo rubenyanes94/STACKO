@@ -13,7 +13,9 @@ const Hero = () => {
   const { t, v, lang, isDevMode, to, section } = useCopy();
   const [titleStart, titleOutline, titleEnd] = v('hero.title');
   const statLabels = t('hero.stats');
-  const stats = [`${projects.length}+`, '24/7', t('hero.statDays'), 'ES · EN'];
+  // Solo cuentan los proyectos con URL pública: "en producción" no puede incluir los que aún no la tienen.
+  const liveCount = projects.filter((project) => project.links.live).length;
+  const stats = [`${liveCount}+`, '24/7', t('hero.statDays'), 'ES · EN'];
 
   return (
     <section className="hero grid-bg">

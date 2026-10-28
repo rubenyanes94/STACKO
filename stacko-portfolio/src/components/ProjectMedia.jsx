@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/language';
 import VideoPlayer from './VideoPlayer.jsx';
+import ProjectCover from './ProjectCover.jsx';
 
 // Video del aplicativo (si existe) seguido de la galería de capturas con miniaturas.
 const ProjectMedia = ({ project }) => {
@@ -11,6 +12,12 @@ const ProjectMedia = ({ project }) => {
   return (
     <div className="d-grid gap-4">
       {video && <VideoPlayer video={video} title={project.title} />}
+
+      {!video && gallery.length === 0 && (
+        <div className="media-frame">
+          <ProjectCover project={project} alt={t('card.screenshot', { title: project.title })} />
+        </div>
+      )}
 
       {gallery.length > 0 && (
         <div>

@@ -615,6 +615,53 @@ body[data-theme='dev'] .nav-link-stk {
 .cover-img-hover {
   opacity: 0;
 }
+
+/* Portada de marcador: proyectos que aún no tienen captura (ver ProjectCover.jsx) */
+.cover-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 8%;
+  color: #fff;
+  background:
+    radial-gradient(90% 120% at 100% 0%, color-mix(in srgb, var(--project-accent) 70%, transparent), transparent 60%),
+    linear-gradient(160deg, #18181b, #09090b);
+}
+.cover-placeholder-bars {
+  display: flex;
+  gap: 6px;
+}
+.cover-placeholder-bars span {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.cover-placeholder-bars span:nth-child(1) { width: 38%; background: color-mix(in srgb, var(--project-accent) 80%, #fff); }
+.cover-placeholder-bars span:nth-child(2) { width: 22%; }
+.cover-placeholder-bars span:nth-child(3) { width: 14%; }
+.cover-placeholder-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 3.2vw, 1.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.cover-placeholder-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.cover-placeholder-stack span {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.8);
+}
 .project-card:hover .cover-img-hover,
 .project-card:focus-within .cover-img-hover {
   opacity: 1;

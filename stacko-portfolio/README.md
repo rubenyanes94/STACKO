@@ -61,6 +61,10 @@ src/
 - `media.mobile`: captura móvil (≈390×844) que aparece en un teléfono junto al navegador.
 - `media.preview`: clip `.mp4` de 5–10 s, sin sonido, menos de 2 MB. Se reproduce en hover en lugar de `hover`.
 - `links.label`: texto para la barra de URL si el dominio real no es presentable.
+- Sin captura todavía: deja `cover: ''` y la portada muestra un marcador con el nombre, el stack y el color de marca
+  (nunca una imagen rota). Al rellenar `cover` el marcador desaparece solo.
+- `client` puede ser texto o `{ en: '…', es: '…' }` si debe traducirse.
+- El contador "N+ productos" del hero solo cuenta proyectos con `links.live`.
 
 ## Añadir el video de un aplicativo
 
