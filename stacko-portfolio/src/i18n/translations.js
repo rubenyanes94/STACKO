@@ -93,7 +93,7 @@ const base = {
     },
     featured: {
       eyebrow: { dev: 'ls -la ./featured', business: 'Selected work' },
-      title: 'Products in production, not mockups.',
+      title: 'Real products, built end to end.',
       all: 'All projects',
     },
     card: {
@@ -178,7 +178,7 @@ const base = {
     },
     projects: {
       eyebrow: { dev: 'cd ~/projects', business: 'Our work' },
-      title: 'Real products. Real clients. Shipped.',
+      title: 'Real products. Real clients. Built end to end.',
       lead: {
         dev: 'Architecture, stack and engineering decisions behind every project.',
         business: 'Each case study shows the business challenge, what we built and the impact it had.',
@@ -338,7 +338,7 @@ const base = {
     },
     featured: {
       eyebrow: { dev: 'ls -la ./destacados', business: 'Proyectos destacados' },
-      title: 'Productos en producción, no maquetas.',
+      title: 'Productos reales, construidos de punta a punta.',
       all: 'Todos los proyectos',
     },
     card: {
@@ -423,7 +423,7 @@ const base = {
     },
     projects: {
       eyebrow: { dev: 'cd ~/proyectos', business: 'Nuestro trabajo' },
-      title: 'Productos reales. Clientes reales. En producción.',
+      title: 'Productos reales. Clientes reales. Construidos de punta a punta.',
       lead: {
         dev: 'Arquitectura, stack y decisiones de ingeniería detrás de cada proyecto.',
         business: 'Cada caso de estudio muestra el reto del negocio, lo que construimos y el impacto que tuvo.',
